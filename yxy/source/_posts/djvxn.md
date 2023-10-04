@@ -6,6 +6,10 @@ categories:
 ---
 
 
+动不动ban我域名，看样子这篇文章在域名到期前别想放出来了
+
+<!--
+
 使用服务商提供的梯子，访问chatgpt时经常会报
 
 > too many requests in 1 hour
@@ -22,15 +26,15 @@ categories:
 
 2. 登录后，点击搜索按钮，输入“轻量”，选择轻量应用服务器，点击进入。
 
-![](/images/image-20230601174936839.png)
+![](../images/image-20230601174936839.png)
 
-![](/images/image-20230601175000006.png)
+![](../images/image-20230601175000006.png)
 
 3. 点击购买，进入购买页面，按下图配置
 
-![](/images/image-20230601175901947.png)
+![](../images/image-20230601175901947.png)
 
-![](/images/image-20230601175941578.png)
+![](../images/image-20230601175941578.png)
 
 ## 二、配置域名给服务器
 
@@ -121,12 +125,6 @@ curl https://get.acme.sh | sh ~/.acme.sh/acme.sh --register-account -m example@x
 
   ![](/images/image-20230602144942812.png)
 
-
-
-下面应该就是违规的内容了。
-国内不能宣传这个，所以删掉吧。
-
-<!--
 5. 安装X-UI面板，并通过终端的界面，设置用户名、密码、端口等等。
 
 ```bash

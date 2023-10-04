@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/logo.png">
+  
+  <title>【第5章】dom、bom | 域小鱼的私人地盘</title>
+  <meta name="author" content="xue bai" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="js, lv1" />
+  
+  <meta name="description" content="一、dom前言：dom的本质html是一种特定的xml，html规定了语法，而xml可以自己规定标签dom的本质是一个树形的数据结构 1. document对象（1）document对象集合 all[]所有元素的集合anchors[]对所有href链接的引用，非常简单地返回文档中具有name属性值的所有锚点的集合。已被web标准删除。applets对所有applets（小应用程序）对象的引用f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【第5章】dom、bom">
+<meta property="og:url" content="https://yuxiaoyujun.github.io/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-explore/index.html">
+<meta property="og:site_name" content="域小鱼的私人地盘">
+<meta property="og:description" content="一、dom前言：dom的本质html是一种特定的xml，html规定了语法，而xml可以自己规定标签dom的本质是一个树形的数据结构 1. document对象（1）document对象集合 all[]所有元素的集合anchors[]对所有href链接的引用，非常简单地返回文档中具有name属性值的所有锚点的集合。已被web标准删除。applets对所有applets（小应用程序）对象的引用f">
+<meta property="og:locale">
+<meta property="og:image" content="https://yuxiaoyujun.github.io/images/logo.png">
+<meta property="article:published_time" content="2019-04-03T05:03:15.000Z">
+<meta property="article:modified_time" content="2023-07-10T23:00:42.078Z">
+<meta property="article:author" content="xue bai">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="lv1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuxiaoyujun.github.io/images/logo.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner_dark.png');
+      }
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                归档
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                其他
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.jianshu.com/u/006751bcf229">
+                                                                
+                                                                简书
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://space.bilibili.com/290552481">
+                                                                
+                                                                b站
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://twitter.com/6cq6t78JwKOlHui">
+                                                                
+                                                                推特
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.instagram.com/yuxiaoyu822/">
+                                                                
+                                                                IG
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">域小鱼的私人地盘</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>域小鱼的私人地盘</h2> <br />
+                        <span>欢、欢迎你，有缘的陌生人</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://yuxiaoyujun.github.io/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-explore/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">【第5章】dom、bom</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2019-04-03T05:03:15.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2019-04-03</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">xue bai</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~5.51K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1689030042078"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><meta name="referrer" content="no-referrer">
+
+<h2 id="一、dom"><a href="#一、dom" class="headerlink" title="一、dom"></a>一、dom</h2><h4 id="前言：dom的本质"><a href="#前言：dom的本质" class="headerlink" title="前言：dom的本质"></a>前言：dom的本质</h4><p>html是一种特定的xml，html规定了语法，而xml可以自己规定标签<br>dom的本质是一个树形的数据结构<br><img src="https://upload-images.jianshu.io/upload_images/20892169-2583ad059ce41ddb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h4 id="1-document对象"><a href="#1-document对象" class="headerlink" title="1. document对象"></a>1. document对象</h4><h6 id="（1）document对象集合"><a href="#（1）document对象集合" class="headerlink" title="（1）document对象集合"></a>（1）document对象集合</h6><blockquote>
+<p>all[]所有元素的集合<br>anchors[]对所有href链接的引用，非常简单地返回文档中具有name属性值的所有锚点的集合。已被web标准删除。<br>applets对所有applets（小应用程序）对象的引用<br>forms[]对所有forms的引用<br>images[]对所有img的引用<br>links[]对所有area的href的引用，<a>href</p>
+</blockquote>
+<h6 id="（2）document对象属性"><a href="#（2）document对象属性" class="headerlink" title="（2）document对象属性"></a>（2）document对象属性</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cookie     </span><br><span class="line">domain （域名，&#x27;www.baidu.com&#x27;）</span><br><span class="line">lastModified（返回文档被最后修改的日期和时间。） </span><br><span class="line">referrer（从哪里跳转来的。返回&quot;载入&quot;当前文档的文档的 URL。这个比较常用）&#x27;https://www.baidu.com/from=844b/s?word=sdfsdf&#x27;</span><br><span class="line">title（返回当前文档的标题。）</span><br><span class="line">URL（当前文档url，和location.href的区别：URL不可设置，location.href可以设置）</span><br></pre></td></tr></table></figure>
+<h6 id="（3）document对象方法"><a href="#（3）document对象方法" class="headerlink" title="（3）document对象方法"></a>（3）document对象方法</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector()</span><br><span class="line">document.getElementById()	</span><br><span class="line">document.getElementsByName()</span><br><span class="line">document.getElementsByClassname()	</span><br><span class="line">document.getElementsByTagName()	</span><br><span class="line">document.createElement() </span><br><span class="line">document.createTextNode() </span><br><span class="line">document.createAttribute() </span><br><span class="line">document.open()	</span><br></pre></td></tr></table></figure>
+<h4 id="2-document-element"><a href="#2-document-element" class="headerlink" title="2. document.element"></a>2. document.element</h4><h6 id="（1）节点操作"><a href="#（1）节点操作" class="headerlink" title="（1）节点操作"></a>（1）节点操作</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">element.getElementsByTagName()</span><br><span class="line">element.appendChild()  在元素末尾添加新结点</span><br><span class="line">element.insertBefore(新节点，指定子节点) 在指定的已有的子节点之前插入新节点。</span><br><span class="line">element.cloneNode(deep) 复制元素 要连后代一起复制请把 deep 参数设置 true，否则设置为 false。</span><br><span class="line">element.hasChildNodes() 有子节点返回true</span><br><span class="line">element.normalize() 合并元素中相邻的文本节点，删除空的文本节点</span><br><span class="line">element.replaceChild(newchild,oldchild) 用newchild替换元素中的某个oldchlid了</span><br><span class="line">element.removeChild(node) 删除元素中的某个子元素node</span><br></pre></td></tr></table></figure>
+<h6 id="（2）节点属性操作"><a href="#（2）节点属性操作" class="headerlink" title="（2）节点属性操作"></a>（2）节点属性操作</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">element.attributes </span><br><span class="line">//返回属性数组</span><br><span class="line">element.getAttribute()</span><br><span class="line">//返回元素节点的指定属性值。 &lt;a href = &#x27;abc&#x27;&gt;&lt;/a&gt; a.getAttribute(&#x27;href&#x27;)---&gt;abc</span><br><span class="line">element.getAttributeNode(name) let atr = document.querySelector(&#x27;a&#x27;).getAttributeNode(&#x27;href&#x27;)</span><br><span class="line">//返回指定的属性节点。 &lt;a href = &#x27;abc&#x27;&gt;&lt;/a&gt; a.getAttribute(&#x27;href&#x27;)---&gt;href = &#x27;abc&#x27; a.getAttribute(&#x27;href&#x27;).value ---&gt; abc a.getAttribute(&#x27;href&#x27;).name---&gt;href</span><br><span class="line">element.hasAttribute(name)</span><br><span class="line">// 如果元素拥有指定属性，则返回true，否则返回 false。</span><br><span class="line">element.hasAttributes()</span><br><span class="line">// 如果元素拥有属性，则返回 true，否则返回 false。</span><br><span class="line">element.setAttribute(name,value) a.setAttribute(&#x27;href&#x27;,&#x27;http://xxx.cn&#x27;)</span><br><span class="line">element.setAttributeNode()//用来设置已经创建的attribute节点</span><br><span class="line">/*</span><br><span class="line">    // 用法</span><br><span class="line">    let div = document.createElement(&#x27;div&#x27;)</span><br><span class="line">    let attr = document.createAttribute(&#x27;attr&#x27;)</span><br><span class="line">    attr.value = &#x27;1&#x27;</span><br><span class="line">    div.setAttributeNode(attr)</span><br><span class="line">    div // &lt;div attr = &quot;1&quot;&gt;&lt;/div&gt;</span><br><span class="line">*/</span><br><span class="line">let newAtrNode = document.createAttribute(&#x27;class&#x27;) newAtrNode.nodeValue=&#x27;abc&#x27; newNode.setAttributeNode(newAtrNode)</span><br><span class="line">element.removeAttribute(name) </span><br><span class="line">element.removeAttributeNode() // let atr = document.querySelector(&#x27;a&#x27;).getAttributeNode(&#x27;href&#x27;) document.querySelector(&#x27;a&#x27;).removeAttribute(atr)</span><br><span class="line">element.style.xxx 获取元素内联的样式(style = &quot;??????&quot;)，也可以通过它进行设置</span><br><span class="line">element.className</span><br></pre></td></tr></table></figure>
+<h6 id="（3）节点属性"><a href="#（3）节点属性" class="headerlink" title="（3）节点属性"></a>（3）节点属性</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">element.childNodes  返回元素子节点的nodelists</span><br><span class="line">element.className 返回元素类名</span><br><span class="line">element.innerHTML</span><br><span class="line">element.id	</span><br><span class="line">element.firstChild 返回元素的首个子元素</span><br><span class="line">element.lastChild 返回元素的最后一个子元素</span><br><span class="line">element.firstElementChild element.lastElementChild 返回元素的最后一个子标签元素</span><br><span class="line">element.nodeType 1 元素 2 属性 3 文本 8 注释</span><br><span class="line">element.nodeValue 元素节点的 nodeValue 是 undefined 或 null 文本节点的 nodeValue 是文本自身 属性节点的 nodeValue 是属性的值</span><br><span class="line">element.nextSibling 当前节点的下一个节点（同一树层级）</span><br><span class="line">element.previousSibling 当前节点的上一个节点（同一树层级）</span><br><span class="line">element.innerHTML element.innerText</span><br><span class="line">element.clientHeight element.clientWidth 返回元素的可见高度可见宽度（要减去滚动条滚动过的高度） </span><br><span class="line">element.offsetWidth element.offsetHeight 返回元素的高度宽度（元素本身的高度宽度，包括边框，不受滚动条影响）</span><br><span class="line">element.offsetTop element.offsetLeft // 元素距上层元素的高度/宽度，不受滚动条影响的</span><br><span class="line">element.scrollTop  element.scrollLeft // 滚动的高度/宽度</span><br><span class="line">element.offsetParent 返回元素的偏移容器，不会是div</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/20892169-dd392939dc6498e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h4 id="3-attribute-在属性节点上的可用的属性或方法"><a href="#3-attribute-在属性节点上的可用的属性或方法" class="headerlink" title="3.attribute 在属性节点上的可用的属性或方法"></a>3.attribute 在属性节点上的可用的属性或方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">attr.isId 属性是id返回true反之false</span><br><span class="line">attr.name 属性名称 btn.attributes[0].name，只读</span><br><span class="line">attr.value 属性值 btn.attributes[0].value</span><br><span class="line">nodemap就是element.attributes ~</span><br><span class="line">nodemap.getNamedItem() // // 通过名称获取指定属性</span><br><span class="line">nodemap.item(num) // 返回nodemap的指定位置属性</span><br><span class="line">nodemap.length	// 返回nodemap长度</span><br><span class="line">nodemap.removeNamedItem(num) // 移出指定位置属性</span><br><span class="line">nodemap.setNamedItem() // 通过名称设置指定属性</span><br><span class="line"></span><br><span class="line">// var btn=document.getElementsByTagName(&quot;h1&quot;)[0];</span><br><span class="line">// var typ=document.createAttribute(&quot;class&quot;);</span><br><span class="line">// typ.nodeValue=&quot;democlass&quot;;</span><br><span class="line">// btn.attributes.setNamedItem(typ);</span><br></pre></td></tr></table></figure>
+<h4 id="4-event"><a href="#4-event" class="headerlink" title="4.event"></a>4.event</h4><h6 id="（1）基本写法"><a href="#（1）基本写法" class="headerlink" title="（1）基本写法"></a>（1）基本写法</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&#x27;body&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;&#123;</span><br><span class="line">    alert(1)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h6 id="（2）事件类型"><a href="#（2）事件类型" class="headerlink" title="（2）事件类型"></a>（2）事件类型</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onabort 图像的加载被中断。</span><br><span class="line">onreset	重置按钮被点击。</span><br><span class="line">onselect	文本被选中。</span><br><span class="line">onunload	用户退出页面。</span><br><span class="line">onchange	域的内容被改变。(input textarea)</span><br><span class="line">onkeydown onkeypress	onkeyup	</span><br><span class="line">onload 一张页面或一幅图像完成加载。</span><br><span class="line">onmousedown onmousemove onmouseout onmouseover onmouseup</span><br><span class="line"></span><br><span class="line">// altKey ctrlKey metaKey shiftKey clientX clientY screenX screenY clientX clientY</span><br><span class="line">// currentTarget target	type(返回当前 Event 对象表示的事件的名称。)</span><br><span class="line">// preventDefault()	阻止默认事件 stopPropagation()停止冒泡</span><br><span class="line"></span><br><span class="line">// 捕获比冒泡先执行，从内到外冒泡，从外到内捕获 addEventListener第三个参数默认为false 即冒泡 true 即捕获</span><br></pre></td></tr></table></figure>
+<h4 id="二、bom"><a href="#二、bom" class="headerlink" title="二、bom"></a>二、bom</h4><p>（1）window下</p>
+<h6 id="history"><a href="#history" class="headerlink" title="history"></a>history</h6><pre><code>back()、forward()、go(n)
+</code></pre>
+<h6 id="location"><a href="#location" class="headerlink" title="location"></a>location</h6><p>以<a target="_blank" rel="noopener" href="http://localhost:8080/axiospage?name=aaa&amp;age=12#abc%E4%B8%BE%E4%BE%8B">http://localhost:8080/axiospage?name=aaa&amp;age=12#abc举例</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hash(#后)   //&#x27;#abc&#x27;</span><br><span class="line">host  // localhost:8080</span><br><span class="line">hostname  //localhost</span><br><span class="line">href   //&#x27;http://localhost:8080/axiospage?name=aaa&amp;age=12#abc&#x27;</span><br><span class="line">pathname（纯路径无#无?）&#x27;/axiospage&#x27;</span><br><span class="line">port    //&#x27;8080&#x27;</span><br><span class="line">protocol   //&#x27;http:&#x27;</span><br><span class="line">search(?后)   //&#x27;?name=aaa&amp;age=12&#x27;</span><br><span class="line">assign(url)替换新url，会存储在当前历史中，和href作用一样。</span><br><span class="line">reload()重新载入，为true时绕过缓存载入文档，为false或无参数则从缓存加载大概</span><br><span class="line">replace(newUrl)	(不会存储在历史跳转中，替换了当前)</span><br></pre></td></tr></table></figure>
+<h6 id="Navigator："><a href="#Navigator：" class="headerlink" title="Navigator："></a>Navigator：</h6><p>Navigator下的属性基本是浏览器的各种信息，如userAgent返回由客户机发送服务器的 user-agent 头部的值。</p>
+<h6 id="其他常用的："><a href="#其他常用的：" class="headerlink" title="其他常用的："></a>其他常用的：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pageXOffset、pageYOffset	 </span><br><span class="line">innerheight、innerwidth（无border margin）	</span><br><span class="line">outerheight、outerwidth(加border margin) </span><br><span class="line">self（相当于window）</span><br><span class="line">Screen</span><br><span class="line">返回屏幕信息，分辨率、大小、英寸、像素 availHeight	availWidth	deviceXDPI	deviceYDPI	height	width	pixelDepth	等等</span><br><span class="line">requestAnimationFrame</span><br></pre></td></tr></table></figure>
+<h4 id="面试题："><a href="#面试题：" class="headerlink" title="面试题："></a>面试题：</h4><h6 id="如何提高dom性能？"><a href="#如何提高dom性能？" class="headerlink" title="如何提高dom性能？"></a>如何提高dom性能？</h6><p>(1) 避免频繁的dom操作<br>(2) 对dom查询做缓存<br>(3) 将dom频繁操作改为一次性操作</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                    <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> 打赏</a>
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://yuxiaoyujun.github.io/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-explore/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://yuxiaoyujun.github.io/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-explore/";
+            const title         = "「【第5章】dom、bom」";
+            const excerpt       = `
+
+一、dom前言：dom的本质html是一种特定的xml，html规定了语法，而xml可以自己规定标签dom的本质是一个树形的数据结构
+1. document对象（1）document对象集合
+all[]所有元素的集合anchors...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/js/" rel="tag">js</a>, <a class="tag-none-link" href="/tags/lv1/" rel="tag">lv1</a>
+                </div>
+                <div class="pull-date">
+                    <!-- <time datetime="2023-07-10T23:00:42.078Z" itemprop="dateModified">最后编辑：2023-07-11</time> -->
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 【第1章】变量类型和计算" href="/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-let/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 【第2章】原型和原型链" href="/2019/04/04/cxy/cxddeziwoxiuyang1/js/js-prototype/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+        <link rel="stylesheet" href="/vendors/gitalk@1.7.2/dist/gitalk.css"></script>
+<div id="gitalk-container" class="post-comments lazy-load" style="padding-left:2rem; padding-right:2rem;"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            console.log('Gitalk loading...');
+            const gitalk = new Gitalk(Object.assign({
+                id: '/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-explore/',
+                path: '/2019/04/03/cxy/cxddeziwoxiuyang1/js/js-explore/'
+            }, JSON.parse('{"clientID":"628850ddd59360af6fad","clientSecret":"f8dd6f68eace9e06f1a51496ff85dc8a4f48cef1","repo":"yuxiaoyujun.github.io","owner":"yuxiaoyujun","admin":["yuxiaoyujun"],"distractionFreeMode":false}')));
+
+            gitalk.render('gitalk-container');
+        }
+        if (typeof Gitalk === 'undefined') {
+            const src = '/vendors/gitalk@1.7.2/dist/gitalk.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">comments powered by Gitalk.</a></noscript>
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">爱生活爱敲代码爱画画爱建模（或许吧）<br />有一颗自洽的灵魂<br>都是自己无聊的碎碎念<br>所以不要看我，我会不好意思<br><br>超级擅长blender<br>想交一个能一起联机建模的朋友<br><br>域名的意思是棒棒的铲屎官<br>不是笨笨的铲屎官噢谢谢你<br><br>没做懒加载没做分页没做代码压缩<br />所以别用流量进来</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                156
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                10
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                39
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/">乱七八糟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">85</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E5%AD%97/">练字</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%98%E7%94%BB/">绘画</a><span class="category-list-count">30</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Midjourney/" style="font-size: 0.7em;">Midjourney</a> <a href="/tags/ai%E7%BB%98%E7%94%BB/" style="font-size: 0.6em;">ai绘画</a> <a href="/tags/api/" style="font-size: 0.6em;">api</a> <a href="/tags/axios/" style="font-size: 0.6em;">axios</a> <a href="/tags/babel/" style="font-size: 0.6em;">babel</a> <a href="/tags/blender/" style="font-size: 0.73em;">blender</a> <a href="/tags/css/" style="font-size: 0.68em;">css</a> <a href="/tags/github/" style="font-size: 0.6em;">github</a> <a href="/tags/js/" style="font-size: 0.78em;">js</a> <a href="/tags/jsdelivr/" style="font-size: 0.6em;">jsdelivr</a> <a href="/tags/lv1/" style="font-size: 0.8em;">lv1</a> <a href="/tags/lv2/" style="font-size: 0.73em;">lv2</a> <a href="/tags/lv3/" style="font-size: 0.6em;">lv3</a> <a href="/tags/node/" style="font-size: 0.75em;">node</a> <a href="/tags/npm/" style="font-size: 0.65em;">npm</a> <a href="/tags/pr/" style="font-size: 0.6em;">pr</a> <a href="/tags/prettier/" style="font-size: 0.63em;">prettier</a> <a href="/tags/react/" style="font-size: 0.6em;">react</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/08/08/diary-0808/"><i class="fa  fa-book"></i> 【2023-08-08】拿水彩画了个锤子</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/08/07/PCCS/"><i class="fa  fa-book"></i> 【PCCS】 色调图（翻译）</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/07/30/diary-0730/"><i class="fa  fa-book"></i> 【2023-07-30】试试用最便宜的材料来体验画水彩</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/07/15/wzq/"><i class="fa  fa-book"></i> 【乱七八糟】五子棋ai的博弈树</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/07/14/diary-0714/"><i class="fa  fa-book"></i> 【2023-07-14】诈骗手段真是层出不穷吖！</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                            <li>
+                                <a target="_blank" rel="nofollow" href="https://github.com/yuxiaoyujun">
+                                    
+                                        <i class="fa fa-github"></i>
+                                    
+                                </a>
+                            </li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 域小鱼的私人地盘 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>这里视频需要科学上网，电脑端访问食用更佳噢~</li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/yuxiaoyujun" target="_blank">YUXIAOYUJUN</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by xue bai.</li>
+                        </div>
+                        <!-- <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hex</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div> -->
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="snow-switch">
+                        <span class="fa fa-snowflake-o"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
+    </div>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <div id="aplayer"></div>
+    <script>
+    $(() => {
+        let music = "/music/laxh.mp3"
+        let musicList = [{
+            name: '恋愛サーキュレーション',
+            artist: '花澤香菜',
+            url: music,
+            cover: "/images/laxh.jpeg",
+            lrc: "/music/laxh.lrc",
+            theme: '#ebd0c2'
+        }]
+        new APlayer({            
+            fixed: true,
+            container: document.getElementById('aplayer'),
+            order: 'random',
+            lrcType: 3,
+            audio: musicList
+            // audio: data
+        });
+        // $.ajax({
+        //     type:"get",
+        //     url:"/music/laxh.mp3",
+        //     dataType:"json",
+        //     success: function(data){
+        //         new APlayer({
+        //             container: document.getElementById('aplayer'),
+        //             fixed: true,
+        //             order: 'random',
+        //             lrcType: 3,
+        //             audio: data
+        //         });
+        //     }
+        // });
+    });
+    // 添加禁止复制的功能（代码复制功能保留了），只有我本地可以复制
+    // 禁止右键菜单
+    if (document.domain === "bbdcsg.love") {
+        document.oncontextmenu = function(){ return false; };
+        // 禁止文字选择
+        document.onselectstart = function(){ return false; };
+        // 禁止复制
+        document.oncopy = function(){ return false; };
+        // 禁止剪切
+        document.oncut = function(){ return false; };
+    }
+
+    </script>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+    <script defer src="/vendors/layui-src@2.5.5/dist/layui.all.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>

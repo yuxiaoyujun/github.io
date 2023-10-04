@@ -1,7 +1,11 @@
 ---
 title: 【flex】简单总结
 date: 2023-03-15 18:02:02
-categories: css
+tags:
+  - css
+  - lv1
+categories:
+  - 程序员的自我修养
 ---
 
 ## 一、容器属性
@@ -53,9 +57,9 @@ categories: css
 #### 2. flex-shrink 剩余空间的项目缩小比例
 数字越大压缩越严重
 
-#### 3. flex-basis 分配剩余空间前，该子元素的占据比例。
+#### 3. flex-basis 分配剩余空间前，该子元素的占据尺寸。
 优先级高于flex-grow和flex-shrink
-
+可以为具体数值，比如flex-basis: 150px
 #### 4. flex 
 2/3/4的简写
 

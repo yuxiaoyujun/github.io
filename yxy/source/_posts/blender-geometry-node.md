@@ -1,7 +1,8 @@
 ---
 title: 【blender】geometry nodes
 date: 2023-06-01 10:13:20
-tags:
+tags: blender
+categories: 建模
 ---
 
 把我在notability的笔记复制过来。
