@@ -25,7 +25,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://yuxiaoyujun.github.io/images/logo.png">
 <meta property="article:published_time" content="2023-03-09T13:42:13.000Z">
-<meta property="article:modified_time" content="2023-10-07T19:58:11.025Z">
+<meta property="article:modified_time" content="2023-10-07T20:29:45.446Z">
 <meta property="article:author" content="xue bai">
 <meta property="article:tag" content="typescript">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~4.34K
+                        1195
                     
                     字
                 </li>
@@ -233,7 +233,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1696708691025"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1696710585446"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -258,85 +258,7 @@
 <h3 id="2-模块"><a href="#2-模块" class="headerlink" title="2. 模块"></a>2. 模块</h3><p>原先叫外部空间。</p>
 <p>export import，如果说命名空间是在一个文件内的模块化，那外部空间就是文件与文件之间的模块化。</p>
 <p>没啥好说的，和js一样。之前写过。</p>
-<h2 id="二、声明文件与声明语句"><a href="#二、声明文件与声明语句" class="headerlink" title="二、声明文件与声明语句"></a>二、声明文件与声明语句</h2><h3 id="1-声明语句-declare"><a href="#1-声明语句-declare" class="headerlink" title="1. 声明语句 declare"></a>1. 声明语句 <code>declare</code></h3><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。</p>
-</li>
-<li><p>declare 只通知编译器某个类型是存在的，不用给出具体实现。</p>
-</li>
-<li><p>declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。</p>
-</li>
-<li><p>所有 declare 语句都不会出现在编译后的文件里面。</p>
-</li>
-</ul>
-<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>declare 关键字可以给出外部变量的类型描述，主要场景为下面两个：</p>
-<ul>
-<li><p><strong>用于声明第三方库或模块的类型</strong>：比如说引入第三方npm包时，若他们没有提供<code>.d.ts</code>文件。以<code>jQuery</code>为例，typescript将不知道如何处理jQuery对象，这时可以声明</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jQuery.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">let</span> <span class="attr">jQuery</span>: <span class="function">(<span class="params">selector: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">any</span></span><br></pre></td></tr></table></figure>
-
-<p>现在，当你在项目中使用 jQuery 时，TypeScript 将知道它的类型信息，以便进行类型检查。</p>
-</li>
-<li><p><strong>与非 TypeScript 代码集成</strong>：有些<code>js</code>库不包含<code>ts</code>代码，也没有声明文件（<code>*.d.ts</code>），需要自己书写声明文件（<code>*.d.ts</code>），此时在声明文件中声明全局变量，让<code>typescript</code>知道这些变量的类型。</p>
-</li>
-</ul>
-<h3 id="可使用declare声明的类型"><a href="#可使用declare声明的类型" class="headerlink" title="可使用declare声明的类型"></a>可使用declare声明的类型</h3><ul>
-<li><p><strong>声明外部变量</strong> <code>declare var</code> 和 <code>declare let</code></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// *.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">let</span> <span class="attr">x</span>: <span class="built_in">number</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> <span class="variable language_">document</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">let</span> <span class="attr">y</span>:<span class="built_in">number</span> = <span class="number">1</span> <span class="comment">// 报错，declare 关键字只用来给出类型描述</span></span><br></pre></td></tr></table></figure>
-<p>使用方法：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/*.ts</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;标题&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>**s声明function **<code>declare function</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare function fn (str:string): void</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>声明class</strong> <code>declare class</code></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params"></span>): <span class="built_in">void</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="title function_">setInit</span>(): <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">sayHello</span>(): <span class="built_in">void</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">getName</span>(<span class="attr">name</span>: <span class="built_in">string</span>): <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>声明模块和命名空间</strong> <code>declare namespace</code> 和 <code>declare module</code></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> <span class="title class_">AnimalLib</span> &#123;</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name:<span class="built_in">string</span></span>);</span><br><span class="line">    <span class="title function_">eat</span>():<span class="built_in">void</span>;</span><br><span class="line">    <span class="title function_">sleep</span>():<span class="built_in">void</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">type</span> <span class="title class_">Animals</span> = <span class="string">&#x27;Fish&#x27;</span> | <span class="string">&#x27;Dog&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="title class_">AnimalLib</span> &#123;</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name:<span class="built_in">string</span></span>);</span><br><span class="line">    <span class="title function_">eat</span>(): <span class="built_in">void</span>;</span><br><span class="line">    <span class="title function_">sleep</span>(): <span class="built_in">void</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">type</span> <span class="title class_">Animals</span> = <span class="string">&#x27;Fish&#x27;</span> | <span class="string">&#x27;Dog&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>**声明js原生属性和方法 ** <code>declare global</code></p>
-<p>为 JavaScript 引擎的原生对象添加属性和方法，可以使用<code>declare global &#123;&#125;</code>语法。</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable language_">global</span> &#123;</span><br><span class="line">	<span class="keyword">interface</span> <span class="title class_">String</span> &#123;</span><br><span class="line">		<span class="title function_">getLength</span>(): <span class="built_in">number</span>  <span class="comment">// 接口中可以这样来声明方法</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;&#125;;  <span class="comment">// 必须要写，在declare global时必须要告诉typescipt这是一个模块。否则会报错</span></span><br></pre></td></tr></table></figure>
-
-<p>使用：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: <span class="built_in">string</span> = <span class="string">&quot;sdfsdf&quot;</span>;</span><br><span class="line">a.<span class="title function_">getLeng</span>();</span><br></pre></td></tr></table></figure>
-
-<p>当然，必须要在<code>tsconfig</code>中的<code>include</code>或<code>files</code>中进行引入。</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;include&quot;</span>: [<span class="string">&quot;src/**/*.ts&quot;</span>],  <span class="comment">// 数组，可以使用通配符</span></span><br><span class="line">    <span class="string">&quot;files&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;string.d.ts&quot;</span> <span class="comment">// 数组，必须是具体文件</span></span><br><span class="line">    ],</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>声明文件比较多时，可以使用三斜线指令（下面会说）<br>···<br>/// <reference path="../string.d.ts" /><br>···</p>
-</li>
-<li><p><strong>声明<code>enmu</code></strong> <code>declare enmu</code></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">	<span class="title class_">Red</span>,</span><br><span class="line">	<span class="title class_">Blue</span>,</span><br><span class="line">	<span class="title class_">Green</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-声明文件-d-ts"><a href="#2-声明文件-d-ts" class="headerlink" title="2.  声明文件 .d.ts"></a>2.  声明文件 <code>.d.ts</code></h3><h3 id="2-1-概念"><a href="#2-1-概念" class="headerlink" title="2.1 概念"></a>2.1 概念</h3><p>一般来说，声明语句会被放到一个单独的文件（<code>*.d.ts</code>）中，这就是声明文件。</p>
-<h3 id="2-2-第三方声明文件"><a href="#2-2-第三方声明文件" class="headerlink" title="2.2 第三方声明文件"></a>2.2 第三方声明文件</h3><p>第三方库一般提供了声明文件，如<code>jQuery</code>。安装第三方声明文件的方法是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @types/xxx --save-dev</span><br></pre></td></tr></table></figure>
-
-<p>如jQuery的声明文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @types/jquery --save-dev</span><br></pre></td></tr></table></figure>
-
-<p>一般来说<code>typescript</code>可以自动识别<code>@types/</code> 的声明文件并加载，但如果官方未提供声明文件，但社区有提供，此时想更改编译选项，可以在<code>tscofig</code>中配置：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;typeRoots&quot;</span>: [<span class="string">&quot;./typings&quot;</span>], <span class="comment">// 社区下载的非官方声明文件</span></span><br><span class="line">    <span class="string">&quot;types&quot;</span> : [<span class="string">&quot;jquery&quot;</span>] <span class="comment">// 引入node_modules/**/@types对应的官方文件，一般不比写</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>补充一点ts查找声明文件的顺序：<ul>
-<li>首先会查找 typeRoots 中指定的目录，以查找自定义的声明文件。</li>
-<li>然后，会查找 types 中指定的声明文件，这通常是用于引入官方声明文件或项目内部的自定义声明文件。</li>
-<li>最后，会继续查找 node_modules/@types 目录下的官方声明文件。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-3-项目自动生成声明文件"><a href="#2-3-项目自动生成声明文件" class="headerlink" title="2.3 项目自动生成声明文件"></a>2.3 项目自动生成声明文件</h3><p><code>tsconfig</code>中，配置<code>&quot;declaration&quot;: true</code> ，编译 时会 自动生成 。</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;declaration&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>或命令行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --declaration</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-4-内置声明文件"><a href="#2-4-内置声明文件" class="headerlink" title="2.4 内置声明文件"></a>2.4 内置声明文件</h3><p>在安装<code>typescript</code>的文件夹内（一般是项目的<code>node_modules/typescript</code>中），会有<code>lib</code>文件夹，提供了一些常见的声明文件。</p>
-<p><img src="/images/image-20231008034339747.png"></p>
-<p>可以在<code>tsconfig</code>中启用</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: [<span class="string">&quot;dom&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-5-自己书写声明文件"><a href="#2-5-自己书写声明文件" class="headerlink" title="2.5 自己书写声明文件"></a>2.5 自己书写声明文件</h3><p>如果既没有官方声明文件，也没有第三方社区声明文件，那只好自己写了。</p>
-<p>declare在上面👆🏻</p>
-<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3></div>
+</div>
         </div>
         
             <div class="kratos-copyright text-center clearfix">
@@ -430,7 +352,7 @@
                     <a class="tag-none-link" href="/tags/typescript/" rel="tag">typescript</a>
                 </div>
                 <div class="pull-date">
-                    <!-- <time datetime="2023-10-07T19:58:11.025Z" itemprop="dateModified">最后编辑：2023-10-08</time> -->
+                    <!-- <time datetime="2023-10-07T20:29:45.446Z" itemprop="dateModified">最后编辑：2023-10-08</time> -->
                 </div>
             </div>
         </footer>
@@ -504,7 +426,7 @@
                 文章
             </span>
             <span class="count">
-                162
+                165
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -531,7 +453,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/">乱七八糟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">91</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E5%AD%97/">练字</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%98%E7%94%BB/">绘画</a><span class="category-list-count">30</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/">乱七八糟</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">92</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E5%AD%97/">练字</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%98%E7%94%BB/">绘画</a><span class="category-list-count">30</span></li></ul>
   </aside>
 
 
@@ -896,6 +818,12 @@
             
           
             
+          
+            
+          
+            
+          
+            
       </ul>
   </div>
   </aside>
@@ -936,7 +864,7 @@
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; 2023 域小鱼的私人地盘 版权所有.</li>
+                            <li>&copy; 2024 域小鱼的私人地盘 版权所有.</li>
                             <li>本站已运行<span id="span_dt">Loading...</span></li>
                         </div>
                         <div>

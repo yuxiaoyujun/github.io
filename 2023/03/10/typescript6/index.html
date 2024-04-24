@@ -16,16 +16,16 @@
   
     <meta name="keywords" content="typescript" />
   
-  <meta name="description" content="一、声明文件与声明语句1. 声明语句 declare概念 declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。  declare 只通知编译器某个类型是存在的，不用给出具体实现。  declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。  所有 declare 语句都不会出现在编译后的文件里面。   场景declare 关键字可以给">
+  <meta name="description" content="一、声明文件与声明语句1. 声明语句 declare declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。 declare 只通知编译器某个类型是存在的，不用给出具体实现。 declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。   所有 declare 语句都不会出现在编译后的文件里面。  场景declare 关键字可以给出外部变">
 <meta property="og:type" content="article">
 <meta property="og:title" content="typescript总结笔记（6）声明文件与声明语句">
 <meta property="og:url" content="https://yuxiaoyujun.github.io/2023/03/10/typescript6/index.html">
 <meta property="og:site_name" content="域小鱼的私人地盘">
-<meta property="og:description" content="一、声明文件与声明语句1. 声明语句 declare概念 declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。  declare 只通知编译器某个类型是存在的，不用给出具体实现。  declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。  所有 declare 语句都不会出现在编译后的文件里面。   场景declare 关键字可以给">
+<meta property="og:description" content="一、声明文件与声明语句1. 声明语句 declare declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。 declare 只通知编译器某个类型是存在的，不用给出具体实现。 declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。   所有 declare 语句都不会出现在编译后的文件里面。  场景declare 关键字可以给出外部变">
 <meta property="og:locale">
 <meta property="og:image" content="https://yuxiaoyujun.github.io/images/logo.png">
 <meta property="article:published_time" content="2023-03-10T14:21:13.000Z">
-<meta property="article:modified_time" content="2023-10-07T19:59:17.621Z">
+<meta property="article:modified_time" content="2024-04-16T15:58:02.853Z">
 <meta property="article:author" content="xue bai">
 <meta property="article:tag" content="typescript">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~3.15K
+                        ~3.14K
                     
                     字
                 </li>
@@ -233,7 +233,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1696708757621"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1713283082853"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -241,15 +241,13 @@
             <hr />
             <div itemprop="articleBody">  <meta name="referrer" content="no-referrer">
 
-<h2 id="一、声明文件与声明语句"><a href="#一、声明文件与声明语句" class="headerlink" title="一、声明文件与声明语句"></a>一、声明文件与声明语句</h2><h3 id="1-声明语句-declare"><a href="#1-声明语句-declare" class="headerlink" title="1. 声明语句 declare"></a>1. 声明语句 <code>declare</code></h3><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。</p>
-</li>
-<li><p>declare 只通知编译器某个类型是存在的，不用给出具体实现。</p>
-</li>
-<li><p>declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。</p>
-</li>
-<li><p>所有 declare 语句都不会出现在编译后的文件里面。</p>
-</li>
+<h2 id="一、声明文件与声明语句"><a href="#一、声明文件与声明语句" class="headerlink" title="一、声明文件与声明语句"></a>一、声明文件与声明语句</h2><h3 id="1-声明语句-declare"><a href="#1-声明语句-declare" class="headerlink" title="1. 声明语句 declare"></a>1. 声明语句 <code>declare</code></h3><ul>
+<li>declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。</li>
+<li>declare 只通知编译器某个类型是存在的，不用给出具体实现。</li>
+<li>declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。</li>
+</ul>
+<ul>
+<li>所有 declare 语句都不会出现在编译后的文件里面。</li>
 </ul>
 <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>declare 关键字可以给出外部变量的类型描述，主要场景为下面两个：</p>
 <ul>
@@ -266,7 +264,7 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// *.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">let</span> <span class="attr">x</span>: <span class="built_in">number</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> <span class="variable language_">document</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">let</span> <span class="attr">y</span>:<span class="built_in">number</span> = <span class="number">1</span> <span class="comment">// 报错，declare 关键字只用来给出类型描述</span></span><br></pre></td></tr></table></figure>
 <p>使用方法：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/*.ts</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;标题&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>**s声明function **<code>declare function</code></p>
+<li><p>**声明function **<code>declare function</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare function fn (str:string): void</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>声明class</strong> <code>declare class</code></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params"></span>): <span class="built_in">void</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="title function_">setInit</span>(): <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">sayHello</span>(): <span class="built_in">void</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">getName</span>(<span class="attr">name</span>: <span class="built_in">string</span>): <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -319,7 +317,7 @@
 
 <h3 id="2-5-自己书写声明文件"><a href="#2-5-自己书写声明文件" class="headerlink" title="2.5 自己书写声明文件"></a>2.5 自己书写声明文件</h3><p>如果既没有官方声明文件，也没有第三方社区声明文件，那只好自己写了。</p>
 <p>declare在上面👆🏻</p>
-<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3></div>
+</div>
         </div>
         
             <div class="kratos-copyright text-center clearfix">
@@ -390,12 +388,10 @@
             const title         = "「typescript总结笔记（6）声明文件与声明语句」";
             const excerpt       = `  
 
-一、声明文件与声明语句1. 声明语句 declare概念
+一、声明文件与声明语句1. 声明语句 declare
 declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。
-
 declare 只通知编译器某个类型是存在的，不用给出具体实现。
-
-declare 只...`;
+declare 只能用来描...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -417,7 +413,7 @@ declare 只...`;
                     <a class="tag-none-link" href="/tags/typescript/" rel="tag">typescript</a>
                 </div>
                 <div class="pull-date">
-                    <!-- <time datetime="2023-10-07T19:59:17.621Z" itemprop="dateModified">最后编辑：2023-10-08</time> -->
+                    <!-- <time datetime="2024-04-16T15:58:02.853Z" itemprop="dateModified">最后编辑：2024-04-16</time> -->
                 </div>
             </div>
         </footer>
@@ -431,7 +427,7 @@ declare 只...`;
             
             
             <div class="nav-next clearfix">
-                <a title=" typescript总结笔记（8）常见的面试题" href="/2023/03/11/typescript8/">下一篇 &gt;</a>
+                <a title=" typescript总结笔记（8）常见面试题" href="/2023/03/11/typescript8/">下一篇 &gt;</a>
             </div>
             
         </nav>
@@ -491,7 +487,7 @@ declare 只...`;
                 文章
             </span>
             <span class="count">
-                162
+                165
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -518,7 +514,7 @@ declare 只...`;
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/">乱七八糟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">91</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E5%AD%97/">练字</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%98%E7%94%BB/">绘画</a><span class="category-list-count">30</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/">乱七八糟</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">92</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E5%AD%97/">练字</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%98%E7%94%BB/">绘画</a><span class="category-list-count">30</span></li></ul>
   </aside>
 
 
@@ -883,6 +879,12 @@ declare 只...`;
             
           
             
+          
+            
+          
+            
+          
+            
       </ul>
   </div>
   </aside>
@@ -923,7 +925,7 @@ declare 只...`;
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; 2023 域小鱼的私人地盘 版权所有.</li>
+                            <li>&copy; 2024 域小鱼的私人地盘 版权所有.</li>
                             <li>本站已运行<span id="span_dt">Loading...</span></li>
                         </div>
                         <div>
