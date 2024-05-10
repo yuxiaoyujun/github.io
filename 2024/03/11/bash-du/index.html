@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/logo.png">
+  
+  <title>【bash】使用du命令、find命令等清理电脑 | 域小鱼的私人地盘</title>
+  <meta name="author" content="xue bai" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="du 命令du 命令（Disk Usage）是用于查看文件或目录磁盘使用情况的命令，它能够列出指定文件或目录的大小。 基本语法如下： 1du [OPTION]... [FILE]...  常用选项包括：  -h, --human-readable：以易读的方式显示文件大小，以 KB、MB、GB 等单位。 -s, --summarize：仅显示总大小，不列出每个子目录的大小。 -c, --total">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【bash】使用du命令、find命令等清理电脑">
+<meta property="og:url" content="https://yuxiaoyujun.github.io/2024/03/11/bash-du/index.html">
+<meta property="og:site_name" content="域小鱼的私人地盘">
+<meta property="og:description" content="du 命令du 命令（Disk Usage）是用于查看文件或目录磁盘使用情况的命令，它能够列出指定文件或目录的大小。 基本语法如下： 1du [OPTION]... [FILE]...  常用选项包括：  -h, --human-readable：以易读的方式显示文件大小，以 KB、MB、GB 等单位。 -s, --summarize：仅显示总大小，不列出每个子目录的大小。 -c, --total">
+<meta property="og:locale">
+<meta property="og:image" content="https://yuxiaoyujun.github.io/images/logo.png">
+<meta property="article:published_time" content="2024-03-11T05:18:18.000Z">
+<meta property="article:modified_time" content="2024-04-29T12:58:18.247Z">
+<meta property="article:author" content="xue bai">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuxiaoyujun.github.io/images/logo.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner_dark.png');
+      }
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                归档
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                其他
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.jianshu.com/u/006751bcf229">
+                                                                
+                                                                简书
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://space.bilibili.com/290552481">
+                                                                
+                                                                b站
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://twitter.com/6cq6t78JwKOlHui">
+                                                                
+                                                                推特
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.instagram.com/yuxiaoyu822/">
+                                                                
+                                                                IG
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">域小鱼的私人地盘</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>域小鱼的私人地盘</h2> <br />
+                        <span>欢、欢迎你，有缘的陌生人</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://yuxiaoyujun.github.io/2024/03/11/bash-du/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">【bash】使用du命令、find命令等清理电脑</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2024-03-11T05:18:18.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2024-03-11</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">xue bai</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~4.05K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1714395498247"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><h2 id="du-命令"><a href="#du-命令" class="headerlink" title="du 命令"></a><code>du</code> 命令</h2><p><code>du</code> 命令（Disk Usage）是用于查看文件或目录磁盘使用情况的命令，它能够列出指定文件或目录的大小。</p>
+<p>基本语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
+
+<p>常用选项包括：</p>
+<ul>
+<li><code>-h, --human-readable</code>：以易读的方式显示文件大小，以 KB、MB、GB 等单位。</li>
+<li><code>-s, --summarize</code>：仅显示总大小，不列出每个子目录的大小。</li>
+<li><code>-c, --total</code>：在所有显示行的末尾输出总和。</li>
+<li><code>-k</code>：以 KB 为单位显示文件大小。</li>
+<li><code>-m</code>：以 MB 为单位显示文件大小。</li>
+<li><code>-g</code>：以 GB 为单位显示文件大小。</li>
+</ul>
+<p>一些常用的用法示例：</p>
+<ol>
+<li><p><strong>查看当前目录大小</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>这将显示当前目录及其所有子目录的大小，并以易读的方式显示。</p>
+</li>
+<li><p><strong>查看指定文件或目录大小</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -h /path/to/file_or_directory</span><br></pre></td></tr></table></figure>
+
+<p>这将显示指定文件或目录的大小。</p>
+</li>
+<li><p><strong>查看指定目录大小并列出每个子目录的大小</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -h /path/to/directory</span><br></pre></td></tr></table></figure>
+
+<p>这将列出指定目录下每个子目录的大小，以及总体的大小。</p>
+</li>
+<li><p><strong>查看当前目录下最大的文件或目录</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -ah | <span class="built_in">sort</span> -rh | <span class="built_in">head</span> -n 10</span><br></pre></td></tr></table></figure>
+
+<p>这将列出当前目录下最大的 10 个文件或目录，并按照大小降序排列。</p>
+</li>
+<li><p><strong>查看当前目录下总大小</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -sh</span><br></pre></td></tr></table></figure>
+
+<p>这将显示当前目录的总大小，而不列出每个子目录的大小。</p>
+</li>
+<li><p><strong>查看当前目录及其所有子目录的总大小</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -sh *</span><br></pre></td></tr></table></figure>
+
+<p>这将显示当前目录及其所有子目录的总大小，但不列出每个子目录的大小。</p>
+</li>
+<li><p><code>du -a</code> 和 <code>du -d</code>不能並存。因為<code>du -d</code>只能級聯查找文件夾，而<code>du -a</code>可以查找文件卻無法指定深度。</p>
+</li>
+</ol>
+<h2 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a><code>sort</code>命令</h2><p><code>sort</code> 命令是用于对文本文件内容进行排序的命令。它可以按照字母顺序、数字大小等方式对文本进行排序，并且支持多种选项以满足不同的需求。</p>
+<p>當你對文件內容使用 <code>sort</code> 命令時，<code>sort</code> 會逐行讀取文件的內容，然後將這些行按照你指定的方式進行排序。</p>
+<p>基本语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
+
+<p>常用选项包括：</p>
+<ul>
+<li><code>-r, --reverse</code>：逆序排序，即降序排序。</li>
+<li><code>-n, --numeric-sort</code>：按照数值大小排序。</li>
+<li><code>-f, --ignore-case</code>：忽略大小写。</li>
+<li><code>-u, --unique</code>：去重，去除重复的行。</li>
+<li><code>-k, --key=POS1[,POS2]</code>：指定以哪个字段进行排序，默认情况下是以整行作为一个字段。</li>
+<li><code>-t, --field-separator=SEP</code>：指定字段分隔符，默认是空格。</li>
+<li><code>-h, --human-numeric-sort</code>：以易读的方式对数字进行排序，例如将 “2K” 排在 “10M” 之前。</li>
+</ul>
+<p>一些常用的用法示例：</p>
+<ol>
+<li><p><strong>按照字母顺序排序</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将按照字母顺序对 <code>file.txt</code> 中的内容进行排序。</p>
+<p>例如，考慮以下數字列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">2</span><br><span class="line">100</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<p>如果按照字母順序排序，它們將按照字符串的第一個字符來排序，即按照1、2、5、1。這將導致以下順序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">100</span><br><span class="line">2</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<p>但如果按照數值大小排序，則會按照數字的大小來排序。這將導致以下順序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">10</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>sort</code> 命令中，使用 <code>-n</code> 選項可以實現按照數值大小排序。</p>
+</li>
+<li><p><strong>按照数字大小排序</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> -n file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将按照数字大小对 <code>file.txt</code> 中的内容进行排序。</p>
+</li>
+<li><p><strong>逆序排序</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> -r file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将按照字母顺序对 <code>file.txt</code> 中的内容进行逆序排序。</p>
+</li>
+<li><p><strong>忽略大小写排序</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> -f file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将按照字母顺序对 <code>file.txt</code> 中的内容进行排序，忽略大小写。</p>
+</li>
+<li><p><strong>去重</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> -u file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将对 <code>file.txt</code> 中的内容进行排序，并且去除重复的行。</p>
+</li>
+<li><p><strong>按照第二列数字大小排序</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> -nk2 file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将按照第二列数字大小对 <code>file.txt</code> 中的内容进行排序。</p>
+</li>
+<li><p><strong>使用逗号作为字段分隔符</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> -t<span class="string">&#x27;,&#x27;</span> -k2 file.txt</span><br></pre></td></tr></table></figure>
+
+<p>这将使用逗号作为字段分隔符，并且按照第二列的内容进行排序。</p>
+</li>
+</ol>
+<h2 id="find命令搜索文件大小"><a href="#find命令搜索文件大小" class="headerlink" title="find命令搜索文件大小"></a><code>find</code>命令搜索文件大小</h2><p>基本的 <code>find</code> 命令语法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; &lt;options&gt; &lt;actions&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>&lt;path&gt;</code>：指定要搜索的路径。</li>
+<li><code>&lt;options&gt;</code>：用于控制搜索行为的选项。</li>
+<li><code>&lt;actions&gt;</code>：用于指定搜索结果的操作，比如 <code>-exec</code>。</li>
+</ul>
+<p>下面是一些常用的 <code>find</code> 命令选项和用法：</p>
+<ol>
+<li><p><strong>搜索文件名</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&quot;filename&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这会在当前目录及其子目录中搜索文件名为 “filename” 的文件。</p>
+</li>
+<li><p><strong>按类型搜索</strong>：</p>
+<ul>
+<li><p>搜索文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f</span><br></pre></td></tr></table></figure></li>
+<li><p>搜索目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> d</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>按大小搜索</strong>：</p>
+<ul>
+<li><p>搜索大于指定大小的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -size +10M</span><br></pre></td></tr></table></figure></li>
+<li><p>搜索小于指定大小的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -size -10M</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>按权限搜索</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -perm 644</span><br></pre></td></tr></table></figure>
+
+<p>这会搜索所有权限设置为 644 的文件。</p>
+</li>
+<li><p><strong>执行操作</strong>：</p>
+<ul>
+<li><p>使用 <code>-exec</code> 执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&quot;*.txt&quot;</span> -<span class="built_in">exec</span> <span class="built_in">cat</span> &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>这会找到所有 <code>.txt</code> 文件并执行 <code>cat</code> 命令来查看文件内容。</p>
+</li>
+<li><p>执行其他操作，比如删除文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">&quot;*.tmp&quot;</span> -delete</span><br></pre></td></tr></table></figure>
+
+<p>这会删除所有以 <code>.tmp</code> 结尾的文件。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用-du-命令以及sort命令整理與查找-mac-系統文件"><a href="#使用-du-命令以及sort命令整理與查找-mac-系統文件" class="headerlink" title="使用 du 命令以及sort命令整理與查找 mac 系統文件"></a>使用 <code>du</code> 命令以及<code>sort</code>命令整理與查找 mac 系統文件</h2><ol>
+<li><strong>查找一級目錄大小，按大小排序</strong>：</li>
+</ol>
+<p>如果你想要按大小降序排序显示一级目录的文件大小，你可以将 <code>du</code> 命令与 <code>sort</code> 命令结合使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -h -d 1 | <span class="built_in">sort</span> -rh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>du -h -d 1</code>：显示当前目录下每个一级文件和目录的總大小。</li>
+<li><code>-h</code>：以易读的方式显示文件大小，不加<code>-h</code>會將以原始字節的方式顯示文件大小。</li>
+<li><code>-d 1</code>：指定深度为 1，表示只显指定目录的一级子目录或文件的大小。</li>
+<li><code>sort -rh</code>：对 <code>du</code> 命令排序，<code>-r</code> 表示逆序（降序），<code>-h</code> 表示按照易读的数字格式进行比较。</li>
+</ul>
+<ol start="2">
+<li><strong>使用<code>find</code> 查找當前目錄下的一級文件夾及文件</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1</span><br></pre></td></tr></table></figure>
+
+<p><code>find . -maxdepth 1</code>: 這個部分告訴 <code>find</code> 命令在當前目錄 (<code>.</code>) 下搜索，但僅搜索一級目錄，不搜索子目錄。 <code>-maxdepth 1</code> 限制搜索深度為一級目錄。</p>
+<ol start="3">
+<li><strong>使用 <code>find -exec</code> 結合 <code>du</code> 命令查找當前目錄下的所有一級文件夾及文件</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -<span class="built_in">exec</span> <span class="built_in">du</span> -sh &#123;&#125; +</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-exec</code> 選項表示要執行一個額外命令，<code>du -sh</code> 則是計算目錄大小的命令，而 <code>&#123;&#125;</code> 代表找到的每個一級目錄的占位符，<code>+</code> 則告訴 <code>find</code> 命令將所有找到的目錄一次性傳遞給 <code>du</code> 命令，而不是對每個目錄單獨執行 <code>du</code> 命令。</li>
+<li><code>du -sh </code>會顯示當前目錄的總大小，而不包括子文件夾的大小。 <code>-s</code> 選項表示總和， <code>-h</code> 選項表示以易讀的方式（如 KB、MB、GB）顯示大小。</li>
+<li>這個命令的意思是，先通過<code>find</code>查找了當前一級目錄下的所有文件及文件夾，在通過<code>du</code>命令查找這些文件及文件夾的大小。由於<code>find</code>查找出的一級目錄此時會被<code>du</code>命令二次查找，即查找出二級目錄，所以需要用<code>du -sh</code>來搜索當前目錄即可，而不需要再次深度查找。</li>
+</ul>
+<ol start="4">
+<li><strong>使用<code>sort</code> 排序</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -<span class="built_in">exec</span> <span class="built_in">du</span> -sh &#123;&#125; + | <span class="built_in">sort</span> -hr</span><br></pre></td></tr></table></figure>
+
+<p>其中，常用的選項包括：</p>
+<ul>
+<li><code>-r</code>：表示反向排序，即降序排列。</li>
+<li><code>-h</code>：表示按照易讀的大小進行，例如 KB、MB、GB。</li>
+</ul>
+<h2 id="刪除文件"><a href="#刪除文件" class="headerlink" title="刪除文件"></a>刪除文件</h2><ol>
+<li><p><strong>使用 <code>rm</code> 命令</strong>：</p>
+<p>使用 <code>rm</code> 命令刪除文件。<code>rm</code> 是 “remove” 的縮寫。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> 文件名</span><br></pre></td></tr></table></figure>
+
+<p>例如，刪除名為 <code>example.txt</code> 的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> example.txt</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>使用 <code>rm</code> 命令刪除多個文件</strong>：</p>
+<p>你可以使用 <code>rm</code> 命令來一次刪除多個文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> file1.txt file2.txt file3.txt</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>使用通配符刪除文件</strong>：</p>
+<p>你可以使用通配符來刪除符合特定模式的文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> *.txt</span><br></pre></td></tr></table></figure>
+
+<p>這將刪除當前目錄中所有擴展名為 <code>.txt</code> 的文件。</p>
+</li>
+<li><p><strong>刪除目錄及其內容</strong>：</p>
+<p>如果你刪除目錄及內容，你可以使用 <code>-r</code> 或 <code>-R</code> 選項來遞歸刪除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r 目錄名</span><br></pre></td></tr></table></figure>
+
+<p>例如，刪除名為 <code>folder</code> 的目錄及內容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r folder</span><br></pre></td></tr></table></figure></li>
+<li><p><strong><code>-rf</code> 和 <code>-r</code> 的區別</strong></p>
+</li>
+</ol>
+<ul>
+<li><code>-r</code> 選項（或 <code>--recursive</code>）單獨使用時，表示遞歸刪除，它會刪除指定目錄下的所有文件及子目錄，包括子目錄中的文件和子子目錄中的內容。但是，如果遇到無法刪除的文件或目錄，會提示用戶確認。</li>
+<li><code>-f</code> 選項（或 <code>--force</code>）單獨使用時，表示強制刪除，它會忽略不存在的文件和不可寫的文件的權限，不會提示用戶進行二次確認的步驟。即使文件或目錄不存在，也不會顯示任何錯誤信息。</li>
+</ul>
+<p>當你組合使用 <code>-r</code> 和 <code>-f</code> 時，即 <code>-rf</code>，表示強制遞歸刪除。這意味著無論文件是否存在、是否只讀，以及是否包含子目錄，都將被刪除，而且不會提示用戶確認。</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                    <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> 打赏</a>
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://yuxiaoyujun.github.io/2024/03/11/bash-du/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://yuxiaoyujun.github.io/2024/03/11/bash-du/";
+            const title         = "「【bash】使用du命令、find命令等清理电脑」";
+            const excerpt       = `du 命令du 命令（Disk Usage）是用于查看文件或目录磁盘使用情况的命令，它能够列出指定文件或目录的大小。
+基本语法如下：
+1du [OPTION]... [FILE]...
+
+常用选项包括：
+
+-h, --human-re...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <!-- <time datetime="2024-04-29T12:58:18.247Z" itemprop="dateModified">最后编辑：2024-04-29</time> -->
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 【2023-08-08】拿水彩画了个锤子" href="/2023/08/08/diary-0808/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 【stable_diffusion】使用阿里雲遠程創建stable diffusion模型" href="/2024/05/06/stable-diffusion/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+        <link rel="stylesheet" href="/vendors/gitalk@1.7.2/dist/gitalk.css"></script>
+<div id="gitalk-container" class="post-comments lazy-load" style="padding-left:2rem; padding-right:2rem;"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            console.log('Gitalk loading...');
+            const gitalk = new Gitalk(Object.assign({
+                id: '/2024/03/11/bash-du/',
+                path: '/2024/03/11/bash-du/'
+            }, JSON.parse('{"clientID":"628850ddd59360af6fad","clientSecret":"f8dd6f68eace9e06f1a51496ff85dc8a4f48cef1","repo":"yuxiaoyujun.github.io","owner":"yuxiaoyujun","admin":["yuxiaoyujun"],"distractionFreeMode":false}')));
+
+            gitalk.render('gitalk-container');
+        }
+        if (typeof Gitalk === 'undefined') {
+            const src = '/vendors/gitalk@1.7.2/dist/gitalk.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">comments powered by Gitalk.</a></noscript>
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">爱生活爱敲代码爱画画爱建模（或许吧）<br />有一颗自洽的灵魂<br>都是自己无聊的碎碎念<br>所以不要看我，我会不好意思<br><br>超级擅长blender<br>想交一个能一起联机建模的朋友<br><br>域名的意思是棒棒的铲屎官<br>不是笨笨的铲屎官噢谢谢你<br><br>没做懒加载没做分页没做代码压缩<br />所以别用流量进来</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                173
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                7
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                43
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">95</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%98%E7%94%BB/">绘画</a><span class="category-list-count">31</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Midjourney/" style="font-size: 0.69em;">Midjourney</a> <a href="/tags/ai%E7%B9%AA%E7%95%AB/" style="font-size: 0.71em;">ai繪畫</a> <a href="/tags/api/" style="font-size: 0.6em;">api</a> <a href="/tags/axios/" style="font-size: 0.6em;">axios</a> <a href="/tags/babel/" style="font-size: 0.6em;">babel</a> <a href="/tags/bing/" style="font-size: 0.6em;">bing</a> <a href="/tags/blender/" style="font-size: 0.73em;">blender</a> <a href="/tags/css/" style="font-size: 0.67em;">css</a> <a href="/tags/github/" style="font-size: 0.6em;">github</a> <a href="/tags/js/" style="font-size: 0.78em;">js</a> <a href="/tags/jsdelivr/" style="font-size: 0.6em;">jsdelivr</a> <a href="/tags/lv1/" style="font-size: 0.8em;">lv1</a> <a href="/tags/lv2/" style="font-size: 0.73em;">lv2</a> <a href="/tags/lv3/" style="font-size: 0.6em;">lv3</a> <a href="/tags/node/" style="font-size: 0.76em;">node</a> <a href="/tags/npm/" style="font-size: 0.64em;">npm</a> <a href="/tags/pr/" style="font-size: 0.6em;">pr</a> <a href="/tags/prettier/" style="font-size: 0.62em;">prettier</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2024/05/10/about-game-view-point/"><i class="fa  fa-book"></i> 【2024-05-10】點解任天堂未倒閉</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2024/05/09/e_sd/"><i class="fa  fa-book"></i> 【stable_diffusion】使用通俗的語言解釋diffusion模型</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2024/05/06/stable-diffusion/"><i class="fa  fa-book"></i> 【stable_diffusion】使用阿里雲遠程創建stable diffusion模型</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2024/03/11/bash-du/"><i class="fa  fa-book"></i> 【bash】使用du命令、find命令等清理电脑</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/08/08/diary-0808/"><i class="fa  fa-book"></i> 【2023-08-08】拿水彩画了个锤子</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                            <li>
+                                <a target="_blank" rel="nofollow" href="https://github.com/yuxiaoyujun">
+                                    
+                                        <i class="fa fa-github"></i>
+                                    
+                                </a>
+                            </li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2024 域小鱼的私人地盘 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>这里视频需要科学上网，电脑端访问食用更佳噢~</li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/yuxiaoyujun" target="_blank">YUXIAOYUJUN</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by xue bai.</li>
+                        </div>
+                        <!-- <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hex</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div> -->
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="snow-switch">
+                        <span class="fa fa-snowflake-o"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
+    </div>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <div id="aplayer"></div>
+    <script>
+    $(() => {
+        let music = "/music/laxh.mp3"
+        let musicList = [{
+            name: '恋愛サーキュレーション',
+            artist: '花澤香菜',
+            url: music,
+            cover: "/images/laxh.jpeg",
+            lrc: "/music/laxh.lrc",
+            theme: '#ebd0c2'
+        }]
+        new APlayer({            
+            fixed: true,
+            container: document.getElementById('aplayer'),
+            order: 'random',
+            lrcType: 3,
+            audio: musicList
+            // audio: data
+        });
+        // $.ajax({
+        //     type:"get",
+        //     url:"/music/laxh.mp3",
+        //     dataType:"json",
+        //     success: function(data){
+        //         new APlayer({
+        //             container: document.getElementById('aplayer'),
+        //             fixed: true,
+        //             order: 'random',
+        //             lrcType: 3,
+        //             audio: data
+        //         });
+        //     }
+        // });
+    });
+    // 添加禁止复制的功能（代码复制功能保留了），只有我本地可以复制
+    // 禁止右键菜单
+    if (document.domain === "bbdcsg.fun") {
+        document.oncontextmenu = function(){ return false; };
+        // 禁止文字选择
+        document.onselectstart = function(){ return false; };
+        // 禁止复制
+        document.oncopy = function(){ return false; };
+        // 禁止剪切
+        document.oncut = function(){ return false; };
+    }
+
+    </script>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+    <script defer src="/vendors/layui-src@2.5.5/dist/layui.all.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
