@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="icon" href="/images/logo.jpeg">
   
-  <title>查看动态 | 域小🐟的私人地盘</title>
+  <title>【hexo】解決hexo報錯 | 域小🐟的私人地盘</title>
   <meta name="author" content="wik siu jyu" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -14,19 +14,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="hexo" />
   
-  <meta name="description" content="÷後重新生成靜態文件： bash 複製程式碼 hexo clean hexo g 1234567   2. **檢查配置文件**： 檢查 &#96;_config.yml&#96; 文件中的配置是否正確，特別是與數據庫相關的配置。3. **檢查 Hexo 插件**： 有些插件可能會導致數據庫讀取問題。嘗試禁用最近安裝或更新的插件，然後再次生成靜態文件。   可以通過注釋掉 &#96;_config.yml&#96; 中的插件配">
+  <meta name="description" content="1：TypeError: Cannot read properties of null (reading &amp;#x27;_id&amp;#x27;)   清理 Hexo 數據庫緩存： 有時候，Hexo 的數據庫文件會損壞，可以通過刪除 db.json 文件來強制 Hexo 重新生成數據庫文件。這個文件通常位於 Hexo 根目錄下。 1rm db.json  然後重新生成靜態文件： 12hexo cleanh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="查看动态">
-<meta property="og:url" content="https://yuxiaoyujun.github.io/2024/06/01/hexo_error/index.html">
+<meta property="og:title" content="【hexo】解決hexo報錯">
+<meta property="og:url" content="https://yuxiaoyujun.github.io/2019/06/09/hexo_error/index.html">
 <meta property="og:site_name" content="域小🐟的私人地盘">
-<meta property="og:description" content="÷後重新生成靜態文件： bash 複製程式碼 hexo clean hexo g 1234567   2. **檢查配置文件**： 檢查 &#96;_config.yml&#96; 文件中的配置是否正確，特別是與數據庫相關的配置。3. **檢查 Hexo 插件**： 有些插件可能會導致數據庫讀取問題。嘗試禁用最近安裝或更新的插件，然後再次生成靜態文件。   可以通過注釋掉 &#96;_config.yml&#96; 中的插件配">
+<meta property="og:description" content="1：TypeError: Cannot read properties of null (reading &amp;#x27;_id&amp;#x27;)   清理 Hexo 數據庫緩存： 有時候，Hexo 的數據庫文件會損壞，可以通過刪除 db.json 文件來強制 Hexo 重新生成數據庫文件。這個文件通常位於 Hexo 根目錄下。 1rm db.json  然後重新生成靜態文件： 12hexo cleanh">
 <meta property="og:locale">
 <meta property="og:image" content="https://yuxiaoyujun.github.io/images/logo.jpeg">
-<meta property="article:published_time" content="2024-06-01T13:43:43.184Z">
-<meta property="article:modified_time" content="2024-06-14T19:07:04.732Z">
+<meta property="article:published_time" content="2019-06-09T04:20:37.000Z">
+<meta property="article:modified_time" content="2024-07-02T07:14:38.031Z">
 <meta property="article:author" content="wik siu jyu">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yuxiaoyujun.github.io/images/logo.jpeg">
   
@@ -205,13 +206,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="https://yuxiaoyujun.github.io/2024/06/01/hexo_error/">
+    <link itemprop="mainEntityOfPage" href="https://yuxiaoyujun.github.io/2019/06/09/hexo_error/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">【hexo】解決hexo報錯</h1>
+            
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2024-06-01T13:43:43.184Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2024-06-01</time></li>
+                <li><time datetime="2019-06-09T04:20:37.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2019-06-09</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">wik siu jyu</span>
                 </li>
@@ -219,7 +222,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        589
+                        671
                     
                     字
                 </li>
@@ -228,31 +231,35 @@
         </header>
         <div class="kratos-post-content">
             
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1719904478031"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
             
             
             <hr />
-            <div itemprop="articleBody"><hr>
-<h2 id="÷後重新生成靜態文件："><a href="#÷後重新生成靜態文件：" class="headerlink" title="÷後重新生成靜態文件："></a>÷後重新生成靜態文件：</h2><ol>
-<li><pre><code>bash
-複製程式碼
-hexo clean
-hexo g
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">2. **檢查配置文件**： 檢查 `_config.yml` 文件中的配置是否正確，特別是與數據庫相關的配置。</span><br><span class="line"></span><br><span class="line">3. **檢查 Hexo 插件**： 有些插件可能會導致數據庫讀取問題。嘗試禁用最近安裝或更新的插件，然後再次生成靜態文件。</span><br><span class="line"></span><br><span class="line">   可以通過注釋掉 `_config.yml` 中的插件配置來禁用插件。例如：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-yaml
-複製程式碼
-# plugins:
-# - hexo-plugin-name
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. **檢查 Hexo 日誌**： 檢查 Hexo 的日誌輸出，尋找更多有關錯誤的線索。日誌通常會包含更多詳細信息，可以幫助確定是哪個特定項目或插件導致了問題。</span><br><span class="line"></span><br><span class="line">5. **升級 Hexo 及其依賴項**： 確保 Hexo 和所有插件都是最新版本。有時候，問題已經在新版本中修復。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-bash
-複製程式碼
-npm update hexo
-npm update
-</code></pre>
+            <div itemprop="articleBody"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">：TypeError: Cannot <span class="built_in">read</span> properties of null (reading <span class="string">&#x27;_id&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p><strong>清理 Hexo 數據庫緩存</strong>： 有時候，Hexo 的數據庫文件會損壞，可以通過刪除 <code>db.json</code> 文件來強制 Hexo 重新生成數據庫文件。這個文件通常位於 Hexo 根目錄下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> db.json</span><br></pre></td></tr></table></figure>
+
+<p>然後重新生成靜態文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>檢查配置文件</strong>： 檢查 <code>_config.yml</code> 文件中的配置是否正確，特別是與數據庫相關的配置。</p>
 </li>
+<li><p><strong>檢查 Hexo 插件</strong>： 有些插件可能會導致數據庫讀取問題。嘗試禁用最近安裝或更新的插件，然後再次生成靜態文件。</p>
+<p>可以通過注釋掉 <code>_config.yml</code> 中的插件配置來禁用插件。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plugins:</span></span><br><span class="line"><span class="comment"># - hexo-plugin-name</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>檢查 Hexo 日誌</strong>： 檢查 Hexo 的日誌的輸出，尋找更多有關錯誤的線索。日誌通常會包含更多詳細信息，可以幫助確定是哪個特定項目或插件導致了問題。</p>
+</li>
+<li><p><strong>升級 Hexo 及其依賴項</strong>： 確保 Hexo 和所有插件都是最新版本。有時候，問題已經在新版本中修復。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm update hexo</span><br><span class="line">npm update</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>檢查數據文件</strong>： 如果你有自定義的數據文件（例如 <code>.md</code> 文件），請檢查這些文件，確保所有文件都是正確格式的，沒有缺失 <code>_id</code> 屬性。</p>
 </li>
 </ol>
-<p>如果以上步驟都無法解決問題，可以考慮創建一個新的 Hexo 項目，然後逐步將你的內容和配置文件移動到新項目中，以確保沒有數據損壞。∆˚≥÷÷÷÷÷÷÷÷÷÷÷÷</p>
+<p>如果以上步驟都無法解決問題，請考慮創建一個新的 Hexo 項目，然後逐步將你的內容和配置文件移動到新項目中，以確保沒有數據損壞。</p>
 </div>
         </div>
         
@@ -308,7 +315,7 @@ npm update
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://yuxiaoyujun.github.io/2024/06/01/hexo_error/",
+                text: "https://yuxiaoyujun.github.io/2019/06/09/hexo_error/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -320,15 +327,12 @@ npm update
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://yuxiaoyujun.github.io/2024/06/01/hexo_error/";
-            const title         = "「」";
-            const excerpt       = `
-÷後重新生成靜態文件：
-bash
-複製程式碼
-hexo clean
-hexo g
-1234567   2. **檢查配置文件**： 檢查 \`_config.yml\` 文件中的配置是否正確，特別是與數據庫相關的配置。3. **檢查 H...`;
+            const hostUrl       = "https://yuxiaoyujun.github.io/2019/06/09/hexo_error/";
+            const title         = "「【hexo】解決hexo報錯」";
+            const excerpt       = `1：TypeError: Cannot read properties of null (reading &#x27;_id&#x27;)
+
+
+清理 Hexo 數據庫緩存： 有時候，Hexo 的數據庫文件會損壞，可以通過刪除 db.j...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -347,10 +351,10 @@ hexo g
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    
+                    <a class="tag-none-link" href="/tags/hexo/" rel="tag">hexo</a>
                 </div>
                 <div class="pull-date">
-                    <!-- <time datetime="2024-06-14T19:07:04.732Z" itemprop="dateModified">最后编辑：2024-06-15</time> -->
+                    <!-- <time datetime="2024-07-02T07:14:38.031Z" itemprop="dateModified">最后编辑：2024-07-02</time> -->
                 </div>
             </div>
         </footer>
@@ -359,9 +363,13 @@ hexo g
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" 【SNK】レオナ・ハイデルン 莉欧娜" href="/2024/06/01/dm-kw/">&lt; 上一篇</a>
+                <a title=" npm相关" href="/2019/06/03/cxy/other/node-n/">&lt; 上一篇</a>
             </div>
             
+            
+            <div class="nav-next clearfix">
+                <a title=" 【基础】foreachforofforin" href="/2019/07/07/cxy/cxddeziwoxiuyang1/foreachforofforin/">下一篇 &gt;</a>
+            </div>
             
         </nav>
     
@@ -373,8 +381,8 @@ hexo g
         const init = () => {
             console.log('Gitalk loading...');
             const gitalk = new Gitalk(Object.assign({
-                id: '/2024/06/01/hexo_error/',
-                path: '/2024/06/01/hexo_error/'
+                id: '/2019/06/09/hexo_error/',
+                path: '/2019/06/09/hexo_error/'
             }, JSON.parse('{"clientID":"628850ddd59360af6fad","clientSecret":"f8dd6f68eace9e06f1a51496ff85dc8a4f48cef1","repo":"yuxiaoyujun.github.io","owner":"yuxiaoyujun","admin":["yuxiaoyujun"],"distractionFreeMode":false}')));
 
             gitalk.render('gitalk-container');
@@ -436,7 +444,7 @@ hexo g
                 标签
             </span>
             <span class="count">
-                46
+                47
             </span>
         </a>
     </div>
@@ -447,7 +455,7 @@ hexo g
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8B%95%E6%BC%AB/">動漫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">95</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B9%AA%E7%95%AB/">繪畫</a><span class="category-list-count">32</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/zbrush/">zbrush</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8B%95%E6%BC%AB/">動漫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E7%A7%AF%E7%B4%AF/">奇奇怪怪的积累</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BB%BA%E6%A8%A1/">建模</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E4%BB%99%E8%8A%B1%E8%A7%82%E5%AF%9F%E6%97%A5%E8%AE%B0/">水仙花观察日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a><span class="category-list-count">96</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B9%AA%E7%95%AB/">繪畫</a><span class="category-list-count">32</span></li></ul>
   </aside>
 
 
@@ -456,7 +464,7 @@ hexo g
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/Midjourney/" style="font-size: 0.69em;">Midjourney</a> <a href="/tags/ai%E7%B9%AA%E7%95%AB/" style="font-size: 0.71em;">ai繪畫</a> <a href="/tags/api/" style="font-size: 0.6em;">api</a> <a href="/tags/axios/" style="font-size: 0.6em;">axios</a> <a href="/tags/babel/" style="font-size: 0.6em;">babel</a> <a href="/tags/bing/" style="font-size: 0.6em;">bing</a> <a href="/tags/blender/" style="font-size: 0.73em;">blender</a> <a href="/tags/css/" style="font-size: 0.67em;">css</a> <a href="/tags/github/" style="font-size: 0.6em;">github</a> <a href="/tags/js/" style="font-size: 0.78em;">js</a> <a href="/tags/jsdelivr/" style="font-size: 0.6em;">jsdelivr</a> <a href="/tags/lv1/" style="font-size: 0.8em;">lv1</a> <a href="/tags/lv2/" style="font-size: 0.73em;">lv2</a> <a href="/tags/lv3/" style="font-size: 0.6em;">lv3</a> <a href="/tags/node/" style="font-size: 0.76em;">node</a> <a href="/tags/npm/" style="font-size: 0.64em;">npm</a> <a href="/tags/pr/" style="font-size: 0.6em;">pr</a> <a href="/tags/prettier/" style="font-size: 0.62em;">prettier</a>
+        <a href="/tags/Midjourney/" style="font-size: 0.68em;">Midjourney</a> <a href="/tags/ai%E7%B9%AA%E7%95%AB/" style="font-size: 0.7em;">ai繪畫</a> <a href="/tags/api/" style="font-size: 0.6em;">api</a> <a href="/tags/axios/" style="font-size: 0.6em;">axios</a> <a href="/tags/babel/" style="font-size: 0.6em;">babel</a> <a href="/tags/bing/" style="font-size: 0.6em;">bing</a> <a href="/tags/blender/" style="font-size: 0.73em;">blender</a> <a href="/tags/css/" style="font-size: 0.65em;">css</a> <a href="/tags/github/" style="font-size: 0.6em;">github</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/js/" style="font-size: 0.78em;">js</a> <a href="/tags/jsdelivr/" style="font-size: 0.6em;">jsdelivr</a> <a href="/tags/lv1/" style="font-size: 0.8em;">lv1</a> <a href="/tags/lv2/" style="font-size: 0.73em;">lv2</a> <a href="/tags/lv3/" style="font-size: 0.6em;">lv3</a> <a href="/tags/node/" style="font-size: 0.75em;">node</a> <a href="/tags/npm/" style="font-size: 0.63em;">npm</a> <a href="/tags/pr/" style="font-size: 0.6em;">pr</a>
       </div>
   </aside>
 
@@ -467,9 +475,6 @@ hexo g
   <div class="tab-content">
       <ul class="list-group">
         
-        
-          
-          
         
           
           
@@ -501,6 +506,8 @@ hexo g
             
           
         
+          
+            
           
             
           
