@@ -2,7 +2,8 @@
 title: '我的喵有时候超级聪明,有时候又超级笨'
 date: 2021-09-23 12:00:38
 tags: 
-categories: 生活
+categories:
+  - [日常]
 ---
 
   <meta name="referrer" content="no-referrer">

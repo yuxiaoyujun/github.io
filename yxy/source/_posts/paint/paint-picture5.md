@@ -1,9 +1,10 @@
 ---
 title: '随便画画'
 date: 2022-11-26 18:23:38
-tags: 绘画
+tags: 繪畫
 categories:
-  - 绘画
+  - [繪畫]
+  - [日常]
 ---
   <meta name="referrer" content="no-referrer">
 

@@ -1,7 +1,7 @@
 ---
 title: 【PCCS】 色调图（翻译）
 date: 2023-08-07 17:44:18
-categories: 绘画
+categories: 繪畫
 ---
 ## 写在开头
 **日语原文来自**：[日本色研事業株式会社 HomePage　](https://www.sikiken.co.jp)

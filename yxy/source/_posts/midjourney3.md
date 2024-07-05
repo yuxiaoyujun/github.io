@@ -1,8 +1,10 @@
 ---
-title: 【ai绘画】Midjourney 之 Commands（命令概述）
+title: 【ai繪畫】Midjourney 之 Commands（命令概述）
 date: 2023-04-10 19:06:10
-tags: Midjourney
-categories: 绘画
+tags: 
+  - ai繪畫
+  - Midjourney
+categories: 繪畫
 ---
 
 ## 一、命令简介
@@ -36,7 +38,7 @@ categories: 绘画
 
    作用：融合2-5个图像的风格，生成新的图像。
 
-   详见[Midjourney 之 Prompts](https://bbdcsg.love/2023/04/09/midjourney2/) 使用`/blend`命令混合图像
+   详见[Midjourney 之 Prompts](https://bbdcsg.fun/2023/04/09/midjourney2/) 使用`/blend`命令混合图像
 
 4. `/docs`：查看文档![](/images/image-20230413175026367.png)
 

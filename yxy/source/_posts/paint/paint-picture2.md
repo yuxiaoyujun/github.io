@@ -1,9 +1,11 @@
 ---
 title: '【人像】画个刘亦菲'
 date: 2022-09-19 15:23:38
-tags: 绘画
+tags: 繪畫
 categories:
-  - 绘画
+  - [繪畫]
+  - [日常]
+
 ---
   <meta name="referrer" content="no-referrer">
 

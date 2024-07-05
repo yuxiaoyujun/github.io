@@ -1,5 +1,5 @@
 ---
-title: bashsd
+title: 【bash】bash 重定向符號
 date: 2020-10-11 05:18:18
 categories: 
   - 程序员的自我修养

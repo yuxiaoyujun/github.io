@@ -3,7 +3,8 @@ title: '【zbrush】曲线弯折'
 date: 2022-10-15 10:21:49
 tags: zbrush
 categories:
-  - 建模
+  - [建模]
+  - [日常]
 ---
   <meta name="referrer" content="no-referrer">
 

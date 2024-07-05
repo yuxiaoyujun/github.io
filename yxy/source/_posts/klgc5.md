@@ -1,7 +1,7 @@
 ---
 title: 【杂七杂八】第五节 Q版全身
 date: 2021-08-07 15:15:20
-categories: 绘画
+categories: 繪畫
 tags: 课程
 ---
 

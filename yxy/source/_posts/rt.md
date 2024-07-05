@@ -2,7 +2,7 @@
 title: 【人体】
 date: 2021-07-18 04:31:34
 categories: 
-  - 绘画
+  - 繪畫
 ---
 在默人体的过程中可能遇到的点和问题记录
 
@@ -33,3 +33,5 @@ categories:
 ![](/images/image-20230724130102251.png)
 
 ![](/images/image-20230724131845281.png)
+
+![](/images/image-20231123220551752.png)

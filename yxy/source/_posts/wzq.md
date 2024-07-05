@@ -1,7 +1,8 @@
 ---
 title: 【乱七八糟】五子棋ai的博弈树
 date: 2023-07-15 14:02:07
-tags:
+categories: 
+  - [奇奇怪怪的积累]
 ---
 
 
@@ -137,3 +138,10 @@ function isGameOver(board) {
 ## 总结
 
 五子棋游戏的博弈树算法是一种用于搜索最佳下棋策略的方法。通过构建博弈树，并使用适当的搜索方法和优化技巧，可以在搜索空间庞大的情况下找到较优的下棋策略。然而，由于五子棋的复杂性，完全搜索所有可能的走法是不现实的，因此需要结合启发式方法和评估函数来提高搜索效率。
+
+
+
+
+
+,A handsome and cool blond boy with exquisite facial features and blue eyes, holding his chin with one hand, the sun hits his face from behind.In the church many pigeons flew over,
+masterpiece, best quality, very detailed, extremely detailed beautiful, super detailed, tousled hair, illustration, dynamic angles, fashion clothing, standing, mannequin, looking at viewer, beautiful detailed eyes, exquisitely beautiful face, floating, high saturation, beautiful and detailed light and shadow

@@ -19,4 +19,4 @@ categories:
 setting - pages中，在Custom Domain填上刚刚添加解析的域名并保存即可。
 ![](https://upload-images.jianshu.io/upload_images/20892169-4854abf46add27bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-完成，[请点击](https://bbdcsg.love/)
+完成，[请点击](https://bbdcsg.fun/)

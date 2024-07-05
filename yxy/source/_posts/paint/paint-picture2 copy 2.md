@@ -1,11 +1,11 @@
 ---
-title: '【Midjourney】用ai绘画生成的图'
+title: '【Midjourney】用ai繪畫生成的图'
 date: 2021-08-03 15:23:38
 tags: 
-  - ai绘画
+  - ai繪畫
   - Midjourney
 categories:
-  - 绘画
+  - 繪畫
 ---
   <meta name="referrer" content="no-referrer">
 

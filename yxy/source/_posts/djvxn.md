@@ -26,13 +26,13 @@ categories:
 
 2. 登录后，点击搜索按钮，输入“轻量”，选择轻量应用服务器，点击进入。
 
-![](../images/image-20230601174936839.png)
+![](/images/image-20230601174936839.png)
 
-![](../images/image-20230601175000006.png)
+![](/images/image-20230601175000006.png)
 
 3. 点击购买，进入购买页面，按下图配置
 
-![](../images/image-20230601175901947.png)
+![](/images/image-20230601175901947.png)
 
 ![](../images/image-20230601175941578.png)
 
@@ -112,13 +112,13 @@ curl https://get.acme.sh | sh ~/.acme.sh/acme.sh --register-account -m example@x
 3. 开始申请证书
 
 ```bash
-~/.acme.sh/acme.sh --issue -d www.bbdcsg.love --standalone   #将www.bbdcsg.love替换成自己解析好的域名
+~/.acme.sh/acme.sh --issue -d www.bbdcsg.fun --standalone   #将www.bbdcsg.fun替换成自己解析好的域名
 ```
 
 4. 安装证书
 
 ```bash
-~/.acme.sh/acme.sh --installcert -d www.bbdcsg.love --key-file /root/private.key --fullchain-file /root/cert.crt    #www.bbdcsg.love替换成自己解析好的域名
+~/.acme.sh/acme.sh --installcert -d www.bbdcsg.fun --key-file /root/private.key --fullchain-file /root/cert.crt    #www.bbdcsg.fun替换成自己解析好的域名
 ```
 
 - 此时，在root目录下可看到证书公钥`/root/cert.crt`及验证文件`/root/private.key`

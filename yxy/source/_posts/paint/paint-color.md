@@ -3,7 +3,7 @@ title: 色彩构成入门
 date: 2022-06-23 04:57:38
 tags: 构成
 categories:
-  - 绘画
+  - 繪畫
 ---
   <meta name="referrer" content="no-referrer">
 

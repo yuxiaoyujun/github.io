@@ -3,7 +3,7 @@ title: 平面构成入门
 date: 2022-07-02 13:23:38
 tags: 构成
 categories:
-  - 绘画
+  - 繪畫
 ---
   <meta name="referrer" content="no-referrer">
 
@@ -66,7 +66,7 @@ categories:
 建筑设计：建筑设计
 服装设计：服装设计
 展示设计：车展、房展、专卖店、商场等展览
-绘画：纯艺（国画、油画、版画、雕塑）
+繪畫：纯艺（国画、油画、版画、雕塑）
 ##第三课、第四课
 平面构成的应用领域
 ![](https://upload-images.jianshu.io/upload_images/20892169-c5171feb8f384f41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

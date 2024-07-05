@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>个人简历</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<meta
+			http-equiv="Cache-Control"
+			content="no-cache, no-store, must-revalidate" />
+		<meta
+			http-equiv="Pragma"
+			content="no-cache" />
+		<meta
+			http-equiv="Expires"
+			content="0" />
+		<link
+			rel="shortcut icon"
+			href="favicon.ico" />
+
+		<!-- Theme CSS -->
+	</head>
+
+	<body>
+		<div
+			id="canvas-content"
+			style="position: absolute; top: -999999px">
+			<!-- 存canvas用的 -->
+		</div>
+		<div
+			id="saveImg"
+			style="
+				position: fixed;
+				bottom: 2rem;
+				right: 2rem;
+				width: 4rem;
+				background-color: #33691e;
+				border-radius: 100%;
+				height: 4rem;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			">
+			<img
+				style="display: block; width: 2rem"
+				src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMuMiIvPgogICAgPHBhdGggZD0iTTkgMkw3LjE3IDRINGMtMS4xIDAtMiAuOS0yIDJ2MTJjMCAxLjEuOSAyIDIgMmgxNmMxLjEgMCAyLS45IDItMlY2YzAtMS4xLS45LTItMi0yaC0zLjE3TDE1IDJIOXptMyAxNWMtMi43NiAwLTUtMi4yNC01LTVzMi4yNC01IDUtNSA1IDIuMjQgNSA1LTIuMjQgNS01IDV6Ii8+CiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo="
+				class="css-1bgbwga" />
+		</div>
+		<div
+			class="printImg"
+			style="
+				position: fixed;
+				bottom: 7rem;
+				right: 2rem;
+				width: 4rem;
+				background-color: #33691e;
+				border-radius: 100%;
+				height: 4rem;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			">
+			<img
+				style="display: block; width: 2rem"
+				src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAACdCAMAAACZ+IrkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkY1OUVFNDAwOEVBMzExRUQ4NEIyODc2NDJCRTk0NEU2IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkY1OUVFM0ZGOEVBMzExRUQ4NEIyODc2NDJCRTk0NEU2IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMDIxIE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSIxN0U1MDUwRDYxRjA0QzE3NzlEQjkyNzZBM0NDRDEzQyIgc3RSZWY6ZG9jdW1lbnRJRD0iMTdFNTA1MEQ2MUYwNEMxNzc5REI5Mjc2QTNDQ0QxM0MiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz44H9gOAAACE1BMVEX////i69j2+/Dk69jx9uz+/v75+/f5+/b+//7y9+3///7y9u3+/v39/vzo7979/v31+u74+vX6+/fy9e36/Pn7/Pn7/fr2+fL1+PLw9ev7/fn6+/j4+/X2+fP3+vT8/fvy9uz6/Pj3+vX7/Pr1+u/z9u/9/fzx9uv1+PH5+vf3+/L5+/j09+/4+/Pw9uz2+/L7/fjz9e76/Pf2+PL3+fTx9u309vD09/Dz9+/0+PH0+PD8/fr1+vD2+/H8/fzx9evp8OHk7Nn9/vv2++/2+PHs8uT0+u72+vDk69v2+vT4+vbt8+b5+/no79/y9u75/Pfz9u719/Hk7dvn7975+/Xy9ev09u7x9un0+uzo7t7m7dvs8eX4+fTm793q8eL3+/Hx9e36/Pbu8+nu9OX3+/P0+PLp8OD5+vXq7+Dl7tzq8ePj69f5+/Tq7uPz+PD2+PD0+O/r8ePi7dnk7Nfh7Njk79r19/D8/Pro793w9uv19vDj7Njo7t/6+/n3+/T4+/f8/vvn7tv5+vbv8+j2+vP1++/w9ezm7dru8+f4+vTo7+Dz9/Dn7t3o7t3w9err8uH3+fXx9ur5+/Pq8OTo8N7x9ezm7d3p79/k693v9eno8ODv9Ofz9uzs8eTl7dn1+fLs8uX5/Pbn8Nv4+/bw9en2+u/u8uj8/fn6/PXy9+74+fX+//32+PP3+/Di6tfj7tj///9rimFZAAAAsXRSTlP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wDX9FxkAAAE+ElEQVR42uzch1fbOBgAcOFixzg2zk5KdkIDYd4BLRx0X/fu7b333vuuN9vbe++9h/7EkwMkMQmupcj293j63jOQ2H755ZMsS7YMwpADCZ3QCZ3QCZ3Q8dMdiEQiw8OSJFnLakSshYT9nbVBdoys/iVJHuheMzXEKeSruOsuRvziQ+667Rx1P3HXTXPUHeOuG+OoGwdd73LcdRJH3fugSzYNOncZ0LqLhI45HuCuOwA6d8McdXnuukmOugLoerfIv2QXy8lEytB1s5hKJg1dNncmjiVSxVqtVkyVQ5VCNJfLxZZMWZZ10yxWU4ZpmLKqylaoCGmyoeTq9Wi+Mp4J8+8bc8obVXe813FF4/NcbOX4lc+vs7Z6cejk5I4uwwJpeod0cCDc/+7m/lZsJtHf/pq8M0V+P738ctfq+1PNHx0RXvwul42Fsvk/wme3DmwfkybHpF8OduoQUhGUUGfsOgQtFr5s6RC8+PtQS6fB46W/X9EhkFEvNXQIaESXdSpQXhiDzRyJI6B1sqUzwPImyPIXWF0UQc5dErSuSpYlsLoUWWYg67gOZ6jjhZcePXfvJ+q69Q7fGJxt755/G12RgWe6rk4QnRQYzjjU7GbOw9N93tZH39ZlfTlIXeWe9gFODFjuFmzDr5uA6exj7gUVlm7EPnbtPGeNA9LpHRtkg9SVbLhdcscGSpA6+1W8eOcGuSB1uk2XBKazJa/UZX0hUB36s4nLdFt9OFgdqi/fV/l6ruvaVwPWkXPpg5dPVNdZty9wnWO9BK1LCx27DkPWZYjuH7C6eaK7DazuNEboPrC6UaL7AbTuArA6BPnqoqWD61NB6+SGTgaq29nQQb28WLR0eAioLong3olaOWaFbuPqNJA0bUVHc5PxxFvztx8OZZNFU5dVVZUNw9B1TdUa805Ubf0vKhvFYo2uMaYv2f6e7tTTNPw6wkw66gk2zdc0pWQi+lkL1kW3tC6vhjLQNa78+av9u5+7+tPBwcE7jo6GYkcUpTyCaW9U0+tK3S8XuYgnWHW6H7oMq46ie2xdik4w6UKMOpqijZPNFSZdFNN21uh1YWbdy3RVSGvpVB90MfI5Jl3qVuaQpUDrTvqk05l0l7neZWsAufvd9S5TPuVOQ625i3TnWT9yZzLp7PXu9bv7HOPbvvsZc/d8u26v90eFQtUaV+yzUj0/KhSaIpKRTWf4kjvX8aRNh9lK9uFrNjnGYz9+xKRTkX02tNt+ii+50xBaO1f7N491WZrRX8c8d3fTtdl1KbfHrNY2EGkfowxplLqjlzi3d/99fG1zW4N8QpYqc2ueESAryolqslwfT9VMMjjVmmPRROGhE6VSKT5i6UJso0Wy5xXpwuzoaCYzO7svnS9UKoV8eq4Qjb5RiVoRylarNlzHEwzn/z696JqPMrhJHOPzFT3ofHiqvKX7xrm52/TIe78GqIOdO6Fj193g3Nz1Pb7/FpG7Da/Tfdfd5dzc7bn+1lMidxteZ/iuu9SxtXv2+BcftKYknoacuziGq9MuxIB1pzBgXRzD1anbMGDdFgxYx47zQTeB/dUpfhwQzLqs5+1cL7qyL3XO+5KNY7g69nauF92QP8XKqFvyC+dh7iZwMLqb/TggvMxdj+2cx7otGLAujoPTTc8oc7vfPP7O208N2uKzV65TFCV25k5eOPH/PoVO6IRO6IRO6DyM/wUYACOTyvRkYpeIAAAAAElFTkSuQmCC"
+				class="css-1bgbwga" />
+		</div>
+		<div class="main-wrapper">
+			<div class="container px-3 px-lg-5">
+				<article
+					id="capture"
+					class="resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+					<div class="resume-header">
+						<div class="row align-items-center">
+							<div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
+								<h2 class="resume-name mb-0 text-uppercase">白雪</h2>
+								<div class="resume-tagline mb-3 mb-md-0">web前端开发工程师</div>
+							</div>
+							<!--//resume-title-->
+							<div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
+								<ul class="list-unstyled mb-0">
+									<li class="mb-2">电话：18410413671</li>
+									<li class="mb-2">籍贯：四川省成都市</li>
+									<li class="mb-2">邮箱：719964405@qq.com</li>
+									<li class="mb-2">毕业院校：陕西科技大学</li>
+									<li class="mb-2">专业：计算机科学与技术</li>
+								</ul>
+							</div>
+							<!--//resume-contact-->
+						</div>
+						<!--//row-->
+					</div>
+					<!--//resume-header-->
+					<hr />
+					<div class="resume-intro py-3">
+						<div class="row align-items-center">
+							<div
+								id="hiddenProfile"
+								class="col-12 col-md-3 col-xl-2 text-center">
+								<div
+									class="resume-profile-image mb-3 mb-md-0 me-md-5 ms-md-0 rounded mx-auto">
+									<img
+										class="resume-profile-img"
+										src="./assets/images/resume-profile.jpg"
+										alt="image" />
+								</div>
+							</div>
+
+							<div class="col text-start">
+								<p class="mb-0">
+									<li>
+										具备扎实的html5、CSS3、JS(ES6)基础，熟悉typescript，了解 CSS
+										预编译语言如 SASS、LESS 等。
+									</li>
+									<li>
+										熟悉MVVM模式， 能熟练运用Vue全家桶（vuex
+										、vue-router）进行开发，能开发较为复杂的交互组件。
+									</li>
+									<li>熟悉 Vue3新特性，理解vue底层实现原理</li>
+									<li>
+										熟悉前端编译构建工具webpack，能配合babel、eslint等工具，熟练的搭建和优化构建环境。
+									</li>
+									<li>
+										能够使用react进行开发，熟悉 react 语法及 react
+										hook、redux、react-router基本使用。
+									</li>
+									<li>
+										具备丰富的微信⼩程序开发经验，有 uni-app 多端开发使用经验。
+									</li>
+									<li>
+										熟悉使用Git版本控制，Charles抓包，了解Jenkins、Nginx基本配置。
+									</li>
+								</p>
+							</div>
+							<!--//col-->
+						</div>
+					</div>
+					<!--//resume-intro-->
+					<hr />
+					<div class="resume-body">
+						<div class="row">
+							<div class="resume-main col-12 col-lg-8 col-xl-9 pe-0 pe-lg-5">
+								<section class="work-section py-3">
+									<h2 class="text-uppercase resume-section-heading mb-4">
+										工作经历
+									</h2>
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												style="font-size: 1.3rem"
+												class="item-title-h3 item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												知柚信息技术有限公司 - 优特云 - web前端开发工程师
+											</h3>
+											<div
+												class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">
+												2023.2 - 2023.7
+											</div>
+										</div>
+										<div class="item-content">
+											<p>
+												简介：优特云是一家具备丰富数字化项目咨询、开发及运营经验的科技公司，通过提供卓越的城市运营综合解决方案，实现智慧城市建设。
+											</p>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												1. 南明商圈 - 运营管理系统
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													负责 运营后台 前端的开发，使用
+													React+Antd+Umi+Typescript 构建企业后台框架。
+												</li>
+												<li>
+													独立负责 优惠券模块 及 发券活动管理
+													相关的运营后台开发，实现了优惠券及发券活动的查找、新增、查询、编辑等功能。
+												</li>
+												<li>
+													熟练掌握了react基本使用及react
+													hooks的各种使用场景及代码优化，熟练掌握了react
+													router的配置。
+												</li>
+												<li>
+													使用组件化开发，提高代码的可维护性和复用性，确保了系统的稳定性和可扩展性。
+												</li>
+												<li>
+													通过使用防抖技术优化多级节点搜索，避免请求接口过于频繁。
+												</li>
+												<!-- https://blog.jakoblind.no/webpack-bundle-analyzer/ -->
+												<li>
+													使用Webpack Bundle
+													Analyzer分析和可视化Webpack打包后的bundle文件。
+													找出打包文件中的性能瓶颈和优化机会，大幅度提高网页的性能和用户体验。
+												</li>
+												<li>负责用node开发一些组内实用的简单小工具。</li>
+											</ul>
+										</div>
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												2. 坪山PC后台管理端
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													成功搭建了基于Vue3.0+antd+Typescript的后台管理端，实现了可视化图表、多维地图等功能。
+												</li>
+												<li>
+													开发了一个nodejs插件，加入到自动化打包的流程中。打包后，自动执行shell脚本，替换相关内容，大大节省了开发时间。
+												</li>
+												<!-- 都是很简单的小工具，比如给运营提供过一个数据处理工具，处理csv表格、监控单个页面的性能、api数据接口测试 
+															然后一些不是给组内人用的，我自己觉得方便的工具，周五早上爬一个组内每天任何人做事写的todo并每周汇总定期发邮件给leader，
+												-->
+											</ul>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												style="font-size: 1.3rem"
+												class="item-title-h3 item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												北京藩篱之中科技有限公司 - web前端开发工程师
+											</h3>
+											<div
+												class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">
+												2019.8 - 2020.7
+											</div>
+										</div>
+										<div class="item-content">
+											<p>
+												简介：图⽚社交App: FLOW，
+												FLOW致力于打造年轻⼈喜爱的社交平台，
+												累计注册用户⼀百万有余。
+											</p>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												1. flow客户端内嵌web页、h5分享回流页
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													负责 app 前端的开发，使用 Vue+Vuex+Vue-router
+													构建单⻚应用，包含⻚面结构优化、交互效果的实现以及各种设备的兼容性处理。
+													<!-- 关于兼容性：https://juejin.cn/post/7146134873164480548 -->
+												</li>
+												<!-- <li>webpack eslint babel typescript</li> -->
+												<li>
+													使用jenkins，完成公司 web
+													部署环境的搭建、基础构建，及web⻚面开发。
+												</li>
+												<li>
+													工作中发现团队开发模板混乱，在多人开发相同项目时，总是产生npm包版本不统一、代码书写不规范、库内样式重复引入等问题，有时候仅仅因为版本不统一的报错问题会延误一天的开发，于是推进并参与开发了一个统一的脚手架，包括prettier、eslint去优化代码、自动引入样式组件库、使用package.json.lock去统一大家的开发版本一致等。
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												2. flow图片社交微信小程序
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													⼩程序包含瀑布流样式的推荐列表、feed详情展示、用户登录注册、小程序商城等功能。
+												</li>
+												<li>尝试使用uni-app重构了app小程序。</li>
+												<!-- 自己做的一直没人测试，就搁着了 -->
+												<li>
+													开发过程中封装常用的小程序组件及常用工具库，如刷新页面、商品购买、页面样式配置及瀑布流等，提高工作效率。
+												</li>
+												<li>
+													重构过程中对小程序视图层级及逻辑层的性能进行了优化，启动时间和访问速度大幅提高。
+												</li>
+												<!-- 性能优化部分：https://developers.weixin.qq.com/community/business/course/000606628dc2e86dc0ddcbb115940d -->
+												<!-- 检测启动时间：https://xingzx.org/blog/wxapp-boot-time -->
+												<!-- https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tips/runtime_nav.html -->
+											</ul>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												style="font-size: 1.3rem"
+												class="item-title-h3 item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												北京陌陌科技有限公司 - web前端开发工程师
+											</h3>
+											<div
+												class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">
+												2016.7 - 2019.7
+											</div>
+										</div>
+										<div class="item-content">
+											<p>
+												简介： MOMO 是⼀⼀款基于地理位置的移动社交应用，
+												是中国领先的开放式社交平台之⼀ 。
+												2014年2月7日，陌陌ceo唐岩宣布用户突破1亿，拥有陌陌、探探等多款手机应用，以及电影制作发行、节目制作等多元业务。美国《财富》杂志发布了
+												2019 年 100 家增长最快的公司排行榜，陌陌位居榜首。
+											</p>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												1.客户端内嵌web页版本更新、直播间各种活动、年度盛典、惊喜夜等大型活动、h5外站回流等
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>使用Vue+Vuex+Vue-router+sass完成日常版本开发</li>
+												<!-- <li>webpack eslint babel typescript</li> -->
+												<li>
+													多次参与大型运营活动的前端开发，如：陌陌年度盛典、惊喜夜等（场均直播同时在线人数300万+），能及时响应及解决直播中问题。
+												</li>
+												<li>
+													使用websocket进行页面实时通信，并封装webcocket通信组件，在活动中用长连接实现了积分、排名实时通讯并更新的功能，当用户失去websocket长连时，能降级至ajax轮询的方式去响应数据。
+												</li>
+												<li>
+													使用js、css制作简单动画，推进动效组同事们使用bodymovin生成JSON配合前端，实现年度报告及活动中复杂的动画交互。
+												</li>
+												<!-- <li>
+													使用html5原生video标签播放视频，实现视频加载loading动画，自定义播放、暂停、重播，优化原生视频播放的样式。
+												</li> -->
+												<li>后台系统相关</li>
+											</ul>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												2.前端组件系统
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													参与前端组件系统的搭建与开发，使用bootstrap搭建组件展示系统、vue、webpack、datapicker等整合版本及活动开发中常用组件（如列表、轮播、滚动、日期时间、弹窗、下拉加载、上拉刷新、和原生客户端的交互如调用相机、打开相册、分享等），整合为npm包引入到日常开发中，极大的减少重复性工作，提高工作效率
+												</li>
+												<li>
+													推进使用prettier统一组内成员代码格式，提高开发效率。
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												3.cdn流媒体监控后台
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													基于vue2、vuex、vue-router搭建并开发了公司内部的视频直播cdn监控系统的前端部分，
+												</li>
+												<li>使用了bootstrap作样式基础</li>
+												<li>
+													使用了echarts、highcharts做可视化的图表，监控上行带宽、下行带宽，推拉流的配置等。使用了lodash等库操作数据。
+												</li>
+												<!--https://blog.csdn.net/qq_34784833/article/details/109462425-->
+												<li>
+													由于项目越来越大，加载越来越慢，所以根据功能重构了系统
+												</li>
+												<li>
+													使用webpack拆分出多入口、多html页面的配置，优化代码结构，使用CodeSplit拆分和整合了代码，维护成本变低，开发效率大幅提升。
+												</li>
+												<!-- https://www.oneapm.com/bi/feature.html -->
+											</ul>
+										</div>
+									</div>
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												4. 直播间红包和活动红包
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													使用vue开发了直播间红包的功能，包括多种红包类型、分享红包、并一直负责线上维护的工作。
+												</li>
+												<li>
+													和客户端约定jsbridge通信规则，通知客户端回调弹框、分享等功能
+												</li>
+												<!-- https://www.kancloud.cn/freya001/super-js/1738511 --->
+												<li>
+													为了匹配活动红包的不同要求，开发了运营动态配置红包的功能
+												</li>
+												<!-- 需求我早就忘了。。以后要把每一个做过的需求都记在文档里 -->
+											</ul>
+										</div>
+									</div>
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												5.陌陌官网
+											</h3>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													使用swiper.js插件及CSS3实现页面动效，用webp格式图片做动态背景图。
+												</li>
+												<!-- https://www.oneapm.com/bi/feature.html -->
+											</ul>
+										</div>
+									</div>
+								</section>
+								<!--//work-section-->
+
+								<section class="project-section py-3">
+									<h2 class="text-uppercase resume-section-heading mb-4">
+										其他项目（兼职）
+									</h2>
+									<ul class="resume-list">
+										<li>
+											因眼病（飞蚊症）在家修养和调理，期间主要接兼职项目，并持续学习新技能，选择了两个比较正式的项目列出。
+										</li>
+										<li>
+											在眼病修养期间，持续学习，保持对技术的好奇心，关注行业动态，利用这段时间思考了自己的职业和人生。
+										</li>
+										<li>
+											学习扎实的繪畫基础、设计和建模的相关知识，实际接过兼职，和相关同事的交流更加迅速。
+										</li>
+										<!-- b站稿子、雪容融、表情包设计、建筑类建模的uv调整、个人博客、个人简历的设计 -->
+									</ul>
+									<div class="item mb-3">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												北京藩篱之中科技有限公司 - FLOW商城微信小程序
+											</h3>
+											<div
+												class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">
+												2020.3月-2020.7月
+											</div>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													使用原生微信小程序语法，独自开发并完成了flow客户端小程序部分的开发维护并上线
+												</li>
+												<li>
+													实现了商品列表页、商品详情页、商品搜索页、购物车、接入了微信支付等功能。
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!--//item-->
+									<div class="item">
+										<div class="item-heading row align-items-center mb-2">
+											<h3
+												class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">
+												上海律魁信息科技有限公司 - 彬彬有法小程序
+											</h3>
+											<div
+												class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">
+												2020.8月-2020.9月
+											</div>
+										</div>
+										<div class="item-content">
+											<ul class="resume-list">
+												<li>
+													使用基于react语法的taro多端开发框架，根据设计稿实现了小程序的首页、个人详情页、客户咨询页等功能。
+												</li>
+												<li>
+													在用taro框架开发的过程中，学习了react开发，掌握了react全家桶的相关知识。
+												</li>
+												<li>
+													协助产品经理讨论与完善需求，能熟练运用ps的各种功能。
+												</li>
+											</ul>
+										</div>
+									</div>
+								</section>
+								<!--//project-section-->
+							</div>
+							<!--//resume-main-->
+							<aside
+								class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
+								<section class="skills-section py-3">
+									<h2 class="text-uppercase resume-section-heading mb-4">
+										技能相关
+									</h2>
+									<div class="item">
+										<h3 class="item-title">专业技能</h3>
+										<ul class="list-unstyled resume-skills-list">
+											<li class="mb-2">JavaScript(ES6)/HTML5/CSS3</li>
+											<li class="mb-2">Webpack</li>
+											<li class="mb-2">VUE/REACT</li>
+											<li class="mb-2">微信小程序</li>
+											<li class="mb-2">ESLINT/Babel</li>
+											<li class="mb-2">EChart</li>
+											<li class="mb-2">VSCode</li>
+										</ul>
+									</div>
+									<!--//item-->
+									<div class="item">
+										<h3 class="item-title">其他</h3>
+										<ul class="list-unstyled resume-skills-list">
+											<li class="mb-2">Ps/Ai/Pr/Ae</li>
+											<li class="mb-2">Blender/ZBrush</li>
+										</ul>
+									</div>
+									<!--//item-->
+								</section>
+								<!--//skills-section-->
+								<section class="education-section py-3">
+									<h2 class="text-uppercase resume-section-heading mb-4">
+										教育背景
+									</h2>
+									<ul class="list-unstyled resume-education-list">
+										<li class="mb-3">
+											<div class="resume-degree font-weight-bold">
+												陕西科技大学 - 本科
+											</div>
+											<div class="resume-degree-org text-muted">
+												计算机科学与技术专业
+											</div>
+											<div class="resume-degree-time text-muted">
+												2012 - 2016
+											</div>
+										</li>
+									</ul>
+								</section>
+								<!--//education-section-->
+								<section class="skills-section py-3">
+									<h2 class="text-uppercase resume-section-heading mb-4">
+										兴趣爱好
+									</h2>
+									<ul class="list-unstyled resume-interests-list mb-0">
+										<li class="mb-2">繪畫</li>
+										<li class="mb-2">建模</li>
+										<li class="mb-2">设计</li>
+										<li class="mb-2">旅行</li>
+									</ul>
+								</section>
+								<!--//certificates-section-->
+								<section class="skills-section py-3">
+									<h2 class="text-uppercase resume-section-heading mb-4">
+										个人评价
+									</h2>
+									<ul class="list-unstyled resume-interests-list mb-0">
+										<li class="mb-2">5年工作经验</li>
+										<li class="mb-2">学习能力强</li>
+										<li class="mb-2">并发能力强</li>
+										<li class="mb-2">抗压能力强</li>
+									</ul>
+								</section>
+							</aside>
+							<!--//resume-aside-->
+						</div>
+						<!--//row-->
+					</div>
+					<!--//resume-body-->
+					<hr />
+					<div class="resume-footer text-center">
+						<ul
+							class="resume-social-list list-inline mx-auto mb-0 d-inline-block text-muted">
+							<li class="list-inline-item mb-lg-0 me-3">
+								<a
+									class="resume-link"
+									href="github.com/yuxiaoyujun"
+									><span class="d-none d-lg-inline-block text-muted"
+										>@github</span
+									></a
+								>
+							</li>
+							<li class="list-inline-item mb-lg-0 me-lg-3">
+								<a
+									class="resume-link"
+									href="https://bbdcsg.fun"
+									><i
+										class="fab fa-twitter-square fa-2x me-2"
+										data-fa-transform="down-4"></i
+									><span class="d-none d-lg-inline-block text-muted"
+										>bbdcsg.fun</span
+									></a
+								>
+							</li>
+							<li
+								class="list-inline-item mb-lg-0 me-lg-3"
+								style="position: absolute; right: 10.5%">
+								<a
+									class="resume-link printHandler"
+									href="https://javascript:void(0);"
+									><i
+										class="fab fa-twitter-square fa-2x me-2"
+										data-fa-transform="down-4"></i
+									><span class="d-none d-lg-inline-block text-muted"
+										>转换打印</span
+									></a
+								>
+							</li>
+						</ul>
+					</div>
+					<!--//resume-footer-->
+				</article>
+			</div>
+			<!--//container-->
+		</div>
+		<!--//main-wrapper-->
+		<!--
+			我觉得在陌陌的经历是让我明白了接下来该在哪些地方进行精进，我接触了很多厉害的人、厉害的事、厉害的思考方式和做事方法。
+			而后面的小公司工作经历，则是放手给了我更多的实验这些精进成果的机会。
+			所以不能说哪个更有收获，在不同的阶段，收获是不同的，都很大。
+		--></body>
+</html>

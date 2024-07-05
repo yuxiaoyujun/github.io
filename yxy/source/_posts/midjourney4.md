@@ -1,8 +1,10 @@
 ---
-title: 【ai绘画】Midjourney 之 Param（参数）
+title: 【ai繪畫】Midjourney 之 Param（参数）
 date: 2023-04-10 19:06:10
-tags: Midjourney
-categories: 绘画
+tags: 
+  - ai繪畫
+  - Midjourney
+categories: 繪畫
 ---
 ## 一、命令列表
 

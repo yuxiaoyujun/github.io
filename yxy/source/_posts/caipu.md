@@ -3,7 +3,7 @@ title: 【菜谱】自己做的菜合集 + 简单描述的菜谱们
 date: 2022-07-23 12:33:23
 tags: 菜谱
 categories:
-  - 生活
+  - 日常
 ---
   <meta name="referrer" content="no-referrer">
 

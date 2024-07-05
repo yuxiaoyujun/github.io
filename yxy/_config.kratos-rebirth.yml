@@ -1,4 +1,4 @@
-site_logo: /images/logo.png
+site_logo: /images/logo.jpeg
 avatarUri: /images/avatar.jpg
 
 customStyles:
@@ -154,6 +154,9 @@ gitalk:
 
 jsconfig:
   main:
-    cover: 1
+    cover:
+      randomAmount: 12 # 表示从1~12
+      baseUrl: /images/thumb/ # 使用默认值（不单独配置），将跟随 vendors 中的相关设定选择是否使用 cdn
+      filenameTemplate: "thumb_{no}.png" 
     expire_day: 1
-    siteLeaveEvent: false
+    siteLeaveEvent: true # 企用頁面假崩潰事件

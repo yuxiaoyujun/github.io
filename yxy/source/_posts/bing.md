@@ -1,7 +1,7 @@
 ---
 title: 【2023-04-17】bing该说你靠谱还是该说你离谱
 date: 2023-04-17 15:13:19
-tags: 生活
+tags: bing
 categories: 日常
 ---
 

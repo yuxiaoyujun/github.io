@@ -1,8 +1,10 @@
 ---
-title: 【ai绘画】midjourney试水合集
+title: 【ai繪畫】midjourney试水合集
 date: 2023-04-10 19:12:51
-tags: Midjourney
-categories: 绘画
+tags: 
+  - ai繪畫
+  - Midjourney
+categories: 繪畫
 ---
 
 准备之后用关键词和命令还有参数一一试水

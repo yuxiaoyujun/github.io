@@ -1,7 +1,7 @@
 ---
 title: 【杂七杂八】第三节 头像基础
 date: 2021-07-28 18:15:20
-categories: 绘画
+categories: 繪畫
 tags: 课程
 
 ---

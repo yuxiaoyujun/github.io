@@ -1,10 +1,10 @@
 ---
-title: ChatGPT初探
+title: 【日常】ChatGPT初探
 date: 2023-01-27 14:10:51
 tags: 实用开源代码or工具
 categories: 
   - [程序员的自我修养]
-  - [生活]
+  - [日常]
 ---
 
   <meta name="referrer" content="no-referrer">

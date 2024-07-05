@@ -1,8 +1,10 @@
 ---
-title: 【ai绘画】Midjourney 之 Prompts
+title: 【ai繪畫】Midjourney 之 Prompts
 date: 2023-04-09 11:55:04
-tags: Midjourney
-categories: 绘画
+tags: 
+  - ai繪畫
+  - Midjourney
+categories: 繪畫
 ---
 
 ## 一、Prompts
@@ -66,7 +68,7 @@ big, try gigantic, enormous, immense
 **尽量把很重要的任何背景或细节搞清楚：**
 
 - **主题：**人、动物、人物、地点、物体等。
-- **媒介：**照片、绘画、插图、雕塑、涂鸦、挂毯等。
+- **媒介：**照片、繪畫、插图、雕塑、涂鸦、挂毯等。
 - **环境：**室内、室外、月球上、纳尼亚、水下、翡翠城等。
 - **照明：**柔和、环境、阴天、霓虹灯、工作室灯等
 - **颜色：**充满活力、柔和、明亮、单色、彩色、黑白、柔和等。
@@ -127,7 +129,7 @@ big, try gigantic, enormous, immense
 			data-tomark-pass="" />
 	</div>
 	<div data-tomark-pass="">
-		<strong data-tomark-pass="">Paint-by-Numbers<br />数字绘画</strong>
+		<strong data-tomark-pass="">Paint-by-Numbers<br />数字繪畫</strong>
 		<img
 			src="https://cdn.document360.io/3040c2b6-fead-4744-a3a9-d56d621c6c7e/Images/Documentation/MJ_Cat_Paint-by-numbers.jpeg"
 			data-tomark-pass="" />

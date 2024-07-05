@@ -202,5 +202,5 @@ gitalk.render('gitalk-container')
     启用热键 (cmd|ctrl + enter) 提交评论。
 
 ## 效果演示
-[点击访问](https://bbdcsg.love/2019/12/11/cxy/other/gitalk/)
+[点击访问](https://bbdcsg.fun/2019/12/11/cxy/other/gitalk/)
 ![](https://upload-images.jianshu.io/upload_images/20892169-fa80cc39adc7320d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

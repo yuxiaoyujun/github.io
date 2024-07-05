@@ -2,11 +2,11 @@
 title: 【2020-11-27】大喵的表情包上线拉！
 date: 2020-11-27 13:23:38
 tags: 
-  - 生活
-  - 绘画
+  - 日常
+  - 繪畫
   - 表情包
 categories:
-  - 绘画
+  - 繪畫
 ---
   <meta name="referrer" content="no-referrer">
 

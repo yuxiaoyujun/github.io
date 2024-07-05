@@ -38,7 +38,7 @@ vendors:
   packages:
     hexo-theme-kratos-rebirth: 
       # 以下一行代码用于对某个包单独配置 cdn 基地址，使用 null 表示不从 cdn 获取此包
-      # cdn_url: null
+      cdn_url: null
       # cdn_url: https://cdn.jsdelivr.net/npm/hexo-theme-kratos-rebirth@latest/
     aplayer:
       # 以下一行代码指定所使用的库版本

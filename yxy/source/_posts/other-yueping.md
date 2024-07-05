@@ -1,12 +1,12 @@
 ---
-title: '粤拼总结笔记'
+title: '【粤语】粤拼总结笔记'
 date: 2021-09-25 08:25:49
 tags: 粤拼
 categories:
   - 奇奇怪怪的积累
 ---
   <meta name="referrer" content="no-referrer">
-  
+
 粤拼教学：[点击访问](https://www.youtube.com/watch?v=KzkKkEETgtQ&list=PLj7yAwByEbSNGWmk_8chfxUTCnJDLmAGr&index=2)
 
 ### 七个主要元音：

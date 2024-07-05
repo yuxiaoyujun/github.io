@@ -216,7 +216,7 @@ div.style.bottom = curBottom + 1 + 'px';
 
 1.打开开发者工具：点击 Performance 左侧有个小圆点 点击刷新页面会录制整个页面加载出来 时间的分配情况。如下图
 
-![image-20230322113633072](/images/image-20230322113633072.png)
+![](/images/image-20230322113633072.png)
 
 - 蓝色: 网络通信和HTML解析
 - 黄色: JavaScript执行
@@ -227,7 +227,7 @@ div.style.bottom = curBottom + 1 + 'px';
 
 2.点击 Event Log：单独勾选 Loading 项会显示 html 和 css 加载时间。如下图：
 
-![image-20230322113719542](/images/image-20230322113719542.png)
+![](/images/image-20230322113719542.png)
 
 3.解析完 DOM+CSSOM 之后会生成一个渲染树 Render Tree，就是 DOM 和 CSSOM 的一一对应关系。
 

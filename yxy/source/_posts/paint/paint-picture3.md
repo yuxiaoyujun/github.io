@@ -3,7 +3,7 @@ title: '【练字】硬笔书法'
 date: 2020-05-24 13:23:38
 tags: 练字
 categories:
-  - 练字
+  - 日常
 ---
   <meta name="referrer" content="no-referrer">
 

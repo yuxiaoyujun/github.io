@@ -33,7 +33,7 @@ app.listen(8186, () => {
 
 访问`http://localhost:8186/home`，浏览器返回
 
-![](../images/image-20231001181550534.png)
+![](/images/image-20231001181550534.png)
 
 当然，使用前需要安装express。
 
@@ -246,7 +246,7 @@ app.get("/", (req, res) => {
 	const downloadUrl = path.resolve(__dirname, "package.json");
 	res.download(downloadUrl);
 	res.sendFile(downloadUrl);
-	res.redirect("https://www.bbdcsg.love");
+	res.redirect("https://www.bbdcsg.fun");
 });
 
 app.listen(8106, () => {

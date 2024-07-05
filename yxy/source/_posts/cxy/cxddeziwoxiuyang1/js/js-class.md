@@ -8,8 +8,12 @@ categories:
   - 程序员的自我修养
 ---
 <meta name="referrer" content="no-referrer">
+## 思维导图
+
+![](/images/类.png)
 
 ## 一、基本写法
+
 类的方法、属性、静态方法、静态属性、私有方法、私有属性
 继承、接口（没有）、抽象（没有）、final（这个有）
 

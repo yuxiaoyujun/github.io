@@ -1,9 +1,10 @@
 ---
 title: '【人像】好久不画人像了'
 date: 2022-11-24 13:23:38
-tags: 绘画
+tags: 繪畫
 categories:
-  - 绘画
+  - [繪畫]
+  - [日常]
 ---
   <meta name="referrer" content="no-referrer">
 

@@ -1,9 +1,10 @@
 ---
 title: '【画画】把心血来潮想画的东西扔在这里'
 date: 2022-10-11 13:23:38
-tags: 绘画
+tags: 繪畫
 categories:
-  - 绘画
+  - [繪畫]
+  - [日常]
 ---
   <meta name="referrer" content="no-referrer">
 
